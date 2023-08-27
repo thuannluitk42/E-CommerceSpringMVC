@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="client/fragments.html :: html_head" />
+
+<body>
+
+	<!-- Topbar Start -->
+	<div th:replace="client/fragments.html :: topbar"></div>
+	<!-- Topbar End -->
+	<!-- Navbar Start -->
+	<div th:replace="client/fragments.html :: navbar"></div>
+	<!-- Navbar End -->
+    <!-- Services Start -->
+    <div class="container-fluid bg-light pt-5">
+        <div class="container py-5">
+            <div class="d-flex flex-column text-center mb-5">
+                <h1 class="display-4 m-0"><span class="text-primary">PHƯƠNG THỨC THANH TOÁN</span> </h1>
+				<h4 class="text-secondary mb-3">Paddy Pet Shop hỗ trợ các phương thức thanh toán sau</h4>
+            </div>
+			<div class="list-group">
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+			    	<div class="d-flex w-100 justify-content-between">
+			     	   <h5 class="mb-1">1. Thanh toán bằng tiền mặt khi nhận hàng:</h5>
+			    	</div>
+			    	<p class="mb-1">Quý khách sẽ thanh toán bằng tiền mặt khi đơn vị vận chuyển giao hàng tận nơi.</p>
+			  </a>
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">2. Thanh toán bằng chuyển khoản ngân hàng (Internet Banking)</h5>
+				    </div>
+				    <p class="mb-1">Lưu ý: Cần đăng ký Internet Banking hoặc dịch vụ thanh toán trực tuyến tại ngân hàng trước khi thực hiện.</p>
+				  	<p class="mb-1">Quý khách chuyển khoản vào tài khoản Ngân hàng công ty của chúng tôi qua các số tài khoản ngân hàng sau:</p>
+				  	<p class="mb-1">Ngân hàng TMCP Kỹ Thương Việt Nam - Techcombank</p>
+				  	<p class="mb-1">Chi nhánh TP. Hồ Chí Minh</p>
+				  	<p class="mb-1">Số tài khoản:01226699208</p>
+				  	<p class="mb-1">Chủ tài khoản: Công Ty TNHH TM VA DV PETHOUSE</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">3. Ví điện tử Momo và các ví điện tử khác</h5>
+				    </div>
+				    <p class="mb-1">Thông qua cổng thanh toán OnePay. Khách hàng lựa chọn QR Payment With Mobile Apps</p>
+					<img class="img-fluid w-100" th:src="@{/resources/images/payment-method.png}" alt="Phuong thuc thanh toan"></img>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">4. Thẻ Tín dung, thẻ ngân hàng</h5>
+				    </div>
+				    <p class="mb-1">Thông qua cổng thanh toán OnePay. Hỗ trợ thẻ tín dụng  ngân hàng liên kết phổ biến nhất Việt Nam. Áp dụng cho mua sắm tại cửa hàng và cả thanh toán online.</p>
+			  </a>
+			</div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+    <!-- Footer Start -->
+	<div th:replace="client/fragments.html :: footer"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/resources/js/easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment-timezone.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+    <!-- Contact Javascript File -->
+    <script type="text/javascript" th:src="@{/resources/js/jqBootstrapValidation.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/contact.js}"></script>
+
+    <!-- Template Javascript -->
+    <script type="text/javascript" th:src="@{/resources/js/main.js}"></script>
+</body>
+
+</html>

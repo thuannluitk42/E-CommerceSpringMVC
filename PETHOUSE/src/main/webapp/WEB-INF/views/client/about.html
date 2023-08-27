@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="client/fragments.html :: html_head" />
+
+<body>
+
+	<!-- Topbar Start -->
+	<div th:replace="client/fragments.html :: topbar"></div>
+	<!-- Topbar End -->
+	<!-- Navbar Start -->
+	<div th:replace="client/fragments.html :: navbar"></div>
+	<!-- Navbar End -->
+
+    <!-- About Start -->
+    <div class="container py-5">
+    </div>
+    <!-- About End -->
+
+
+    <!-- Features Start -->
+    <div class="container-fluid bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5">
+                    <img class="img-fluid w-100"  th:src="@{/resources/images/feature.jpg}" alt="">
+                </div>
+                <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
+                    <h4 class="text-secondary mb-3">Tại sao bạn cần chúng tôi?</h4>
+                    <p class="mb-4">Bạn là chủ nhân của những chú chó hay những chú mèo đáng yêu. 
+                    Bạn coi chúng như những thành viên trong gia đình. Tuy nhiên, làm sao để tiết kiệm chi phí mà vật nuôi 
+                    của bạn vẫn khỏe mạnh và được chăm sóc đầy đủ. Đến với shop pet, bạn sẽ được tư vấn bởi đội ngũ y bác sĩ 
+                    lành nghề và đầy kinh nghiệm, giúp bạn bảo vệ và chăm sóc tốt nhất cho vật nuôi của mình.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+    
+    <div class="container py-5"></div>
+    
+    <!-- Features Start -->
+    <div class="container-fluid bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 py-5 py-lg-0 px-3 px-lg-5">
+                    <h4 class="text-secondary mb-3">Tại sao bạn chọn chúng tôi?</h4>
+                    <p class="mb-4">Bạn quá bận rộn hoặc không đủ điều kiện, phương tiện để đưa thú cưng đến các Phòng khám thú y, 
+                    trong khi bé đang gặp một vấn đề nào đó bất thường về sức khỏe, hay chỉ đơn giản là đến kỳ tái chủng, 
+                    hay bé cần được chăm sóc định kỳ, làm đẹp...? Bạn lo lắng phải làm sao để có được một giải pháp thích hợp 
+                    cho thú cưng của mình? Giờ đây, vấn đề này không còn là nan giải nữa, chỉ cần nhấc máy điện thoại lên và gọi ngay 
+                    cho chúng tôi, các bác sĩ sẽ đem đến cho thú cưng của bạn những dịch vụ tốt nhất, đảm bảo chất lượng chỉ với mức phí vừa phải.</p>
+                </div>
+                <div class="col-lg-5">
+                    <img class="img-fluid w-100"  th:src="@{/resources/images/feature.jpg}" alt="">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Features End -->
+
+    <!-- Team Start -->
+    <div class="container mt-5 pt-5 pb-3">
+        <div class="d-flex flex-column text-center mb-5">
+            <h4 class="text-secondary mb-3">Team Member</h4>
+            <h1 class="display-4 m-0">Meet Our <span class="text-primary">Team Member</span></h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="team card position-relative overflow-hidden border-0 mb-4">
+                    <img class="card-img-top" th:src="@{/resources/images/hathanh.jpg}" alt="">
+                    <div class="card-body text-center p-0">
+                        <div class="team-text d-flex flex-column justify-content-center bg-light">
+                            <h5>Hà Thanh</h5>
+                            <i>Founder & CEO</i>
+                        </div>
+                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team card position-relative overflow-hidden border-0 mb-4">
+                    <img class="card-img-top" th:src="@{/resources/images/team-2.jpg}" alt="">
+                    <div class="card-body text-center p-0">
+                        <div class="team-text d-flex flex-column justify-content-center bg-light">
+                            <h5>Jennifer Page</h5>
+                            <i>Chef Executive</i>
+                        </div>
+                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team card position-relative overflow-hidden border-0 mb-4">
+                    <img class="card-img-top" th:src="@{/resources/images/team-3.jpg}" alt="">
+                    <div class="card-body text-center p-0">
+                        <div class="team-text d-flex flex-column justify-content-center bg-light">
+                            <h5>Kate Glover</h5>
+                            <i>Doctor</i>
+                        </div>
+                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="team card position-relative overflow-hidden border-0 mb-4">
+                    <img class="card-img-top" th:src="@{/resources/images/team-4.jpg}" alt="">
+                    <div class="card-body text-center p-0">
+                        <div class="team-text d-flex flex-column justify-content-center bg-light">
+                            <h5>Lilly Fry</h5>
+                            <i>Trainer</i>
+                        </div>
+                        <div class="team-social d-flex align-items-center justify-content-center bg-dark">
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-outline-primary rounded-circle text-center px-0" style="width: 36px; height: 36px;" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+    <!-- Footer Start -->
+	<div th:replace="client/fragments.html :: footer"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/resources/js/easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment-timezone.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+    <!-- Contact Javascript File -->
+    <script type="text/javascript" th:src="@{/resources/js/jqBootstrapValidation.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/contact.js}"></script>
+
+    <!-- Template Javascript -->
+    <script type="text/javascript" th:src="@{/resources/js/main.js}"></script>
+</body>
+
+</html>

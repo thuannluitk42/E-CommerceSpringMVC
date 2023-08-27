@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="client/fragments.html :: html_head" />
+
+<body>
+
+	<!-- Topbar Start -->
+	<div th:replace="client/fragments.html :: topbar"></div>
+	<!-- Topbar End -->
+	<!-- Navbar Start -->
+	<div th:replace="client/fragments.html :: navbar"></div>
+	<!-- Navbar End -->
+
+    <!-- Services Start -->
+    <div class="container-fluid bg-light pt-5">
+        <div class="container py-5">
+            <div class="d-flex flex-column text-center mb-5">
+                <h1 class="display-4 m-0"><span class="text-primary">Chính sách quyền riêng tư</span> </h1>
+                <h4 class="text-secondary mb-3">Chính sách bảo mật thông tin người dùng</h4>
+            </div>
+			<div class="list-group">
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+			    	<div class="d-flex w-100 justify-content-between">
+			     	   <h5 class="mb-1">1. Phạm vi thu thập và mục đích thu thập</h5>
+			    	</div>
+			    	<p class="mb-1">Việc thu thập dữ liệu chủ yếu trên website pethouse.vn bao gồm: email, số điện thoại, địa chỉ khách hàng. </p>
+			    	<p class="mb-1">Dữ liệu sẽ được thu thập khi khách hàng đăng ký thành viên, hoặc đặt hàng trên hệ thống website Pethouse.vn & Pethouse.com.vn</p>
+			    	<p class="mb-1">Đây là các thông tin mà Pethouse cần khách hàng cung cấp khi sử dụng dịch vụ và nhằm để Pethouse liên hệ xác nhận khi khách hàng mua sắm tại Pethouse</p>
+			  </a>
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">2. Phạm Vi Sử Dụng Thông Tin</h5>
+				    </div>
+				    <p class="mb-1"><b>Pethouse sẽ sử dụng thông tin khách hàng cung cấp để:</b></p>
+					<p class="mb-1">Cung cấp các dịch vụ đến khách hàng;</p>
+					<p class="mb-1">Gửi các thông báo về các hoạt động trao đổi thông tin giữa khách hàng và website Pethouse.vn ;</p>
+					<p class="mb-1">Liên lạc và giải quyết với khách hàng trong những trường hợp đặc biệt.</p>
+					<p class="mb-1">Không sử dụng thông tin cá nhân của khách hàng ngoài mục đích xác nhận và liên hệ có liên quan đến giao dịch tại Pethouse.vn;</p>
+					<p class="mb-1">Trong trường hợp có yêu cầu của pháp luật: 
+									Công ty có trách nhiệm hợp tác cung cấp thông tin cá nhân khách hàng khi có yêu cầu từ cơ quan tư pháp bao gồm: Viện kiểm sát, tòa án, 
+									cơ quan công an điều tra liên quan đến hành vi vi phạm pháp luật nào đó của khách hàng. 
+									Ngoài ra, không ai có quyền xâm phạm vào thông tin cá nhân của khách hàng.</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">3. Thời gian lưu trữ thông tin</h5>
+				    </div>
+				    <p class="mb-1">Dữ liệu cá nhân của khách hàng sẽ được lưu trữ cho đến khi có yêu cầu hủy bỏ hoặc khách hàng yêu cầu hủy bỏ. Còn lại trong mọi trường hợp thông tin cá nhân khách hàng sẽ được bảo mật trên máy chủ của Pethouse</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">4. Địa chỉ của đơn vị thu thập và quản lý thông tin cá nhân</h5>
+				    </div>
+				    <p class="mb-1">Công ty Cổ Phần Thương Mại Và Dịch Vụ Pethouse</p>
+				    <p class="mb-1">MST: 01226699208 Cấp Ngày 26/08/2020 tại Sở Kế Hoạch Và Đầu Tư Thành Phố Hồ Chí Minh</p>
+					 <p class="mb-1">Địa chỉ: 112 Nguyễn Văn Thủ, P. Đa Kao, Quận 1</p>
+					 <p class="mb-1">Hotline: 01226699208</p>
+					 <p class="mb-1">Email: Pethouseestore@gmail.com</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">5. Tổ chức các nhân được tiếp cận thông tin thu thập</h5>
+				    </div>
+				     <p class="mb-1">Công ty Cổ Phần Thương Mại Và Dịch Vụ Pethouse & Nhân Viên của công ty</p>
+				     <p class="mb-1">Các đơn vị vận chuyển, đối tác giao nhận phụ trách giao hàng đến người dùng</p>
+					 <p class="mb-1">Cơ quan chứ năng nhà nước có thẩm quyền như : Viện kiểm sát, tòa án, cơ quan công an 
+					 điều tra liên quan đến hành vi vi phạm pháp luật nào đó của khách hàng</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">6. Phương tiện và công cụ để người dùng tiếp cận và chỉnh sửa dữ liệu cá nhân của mình</h5>
+				    </div>
+				     <p class="mb-1">Khách hàng có quyền tự kiểm tra, cập nhật, điều chỉnh hoặc hủy bỏ thông tin cá nhân của mình bằng cách yêu cầu chúng tôi thực hiện việc này.</p>
+				     <p class="mb-1">Khách hàng có quyền gửi khiếu nại về người bán đến Ban quản trị của website khuyến mại Pethouse. 
+								     Khi tiếp nhận những phản hồi này, chúng tôi sẽ xác nhận lại thông tin. 
+								     Trường hợp đúng như phản ánh của thành viên tùy theo mức độ, chúng tôi sẽ có những biện pháp xử lý kịp thời.</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">7. Cam kết bảo mật thông tin cá nhân khách hàng</h5>
+				    </div>
+				     <p class="mb-1">Thông tin cá nhân của khách hàng trên Pethouse được cam kết bảo mật tuyệt đối theo chính sách bảo vệ thông tin cá nhân của Pethouse. 
+				     				 Việc thu thập và sử dụng thông tin của mỗi khách hàng chỉ được thực hiện khi có sự đồng ý của khách hàng đó trừ những trường hợp pháp luật có quy định khác.</p>
+				     <p class="mb-1">Không sử dụng, không chuyển giao, cung cấp hay tiết lộ cho bên thứ 3 nào về thông tin cá nhân của khách hàng khi không có sự cho phép đồng ý từ khách hàng.</p>
+			         <p class="mb-1">Trong trường hợp máy chủ lưu trữ thông tin bị hacker tấn công dẫn đến mất mát dữ liệu cá nhân. Chúng tôi sẽ có trách nhiệm thông báo vụ việc cho cơ quan chức năng điều tra xử lý kịp thời và thông báo cho khách hàng được biết.</p>
+			  		 <p class="mb-1">Bảo mật tuyệt đối mọi thông tin giao dịch trực tuyến của khách hàng bao gồm thông tin hóa đơn kế toán chứng từ số hóa trên Pethouse.vn</p>
+			   		 <p class="mb-1">Ban quản lý Pethouse.vn yêu cầu các cá nhân khi đăng ký/mua hàng phải cung cấp đầy đủ thông tin cá nhân có liên quan như: Họ và tên, địa chỉ liên lạc, 
+			   		 				email, điện thoại và chịu trách nhiệm về tính pháp lý của những thông tin trên. Ban quản lý Pethouse.vn không chịu trách nhiệm cũng như không giải
+			   		 			     quyết mọi khiếu nại có liên quan đến quyền lợi của khách hàng đó nếu xét thấy tất cả thông tin cá nhân của khách hàng đó cung cấp khi đăng ký ban đầu là không chính xác.</p>
+			  </a>
+			</div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+    <!-- Footer Start -->
+	<div th:replace="client/fragments.html :: footer"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/resources/js/easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment-timezone.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+    <!-- Contact Javascript File -->
+    <script type="text/javascript" th:src="@{/resources/js/jqBootstrapValidation.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/contact.js}"></script>
+
+    <!-- Template Javascript -->
+    <script type="text/javascript" th:src="@{/resources/js/main.js}"></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="client/fragments.html :: html_head" />
+
+<body>
+
+	<!-- Topbar Start -->
+	<div th:replace="client/fragments.html :: topbar"></div>
+	<!-- Topbar End -->
+	<!-- Navbar Start -->
+	<div th:replace="client/fragments.html :: navbar"></div>
+	<!-- Navbar End -->
+    <!-- Carousel Start -->
+    <div th:replace="client/fragments.html :: carousel"></div>
+    <!-- Carousel End -->
+
+    <!-- Contact Start -->
+    <div class="container-fluid pt-5">
+        <div class="d-flex flex-column text-center mb-5 pt-5">
+            <h4 class="text-secondary mb-3">Contact Us</h4>
+            <h1 class="display-4 m-0">Contact For <span class="text-primary">Any Query</span></h1>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 mb-5">
+                <div class="contact-form">
+                    <div id="success"></div>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="email" class="form-control p-4" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <input type="text" class="form-control p-4" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control p-4" rows="6" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 mb-n2 p-0">
+				<iframe style="width: 100%; height: 500px;border:0;" frameborder="0" allowfullscreen="" aria-hidden="false" tabindex="0" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.567072564066!2d106.66168289999999!3d10.767810400000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f8bfe04fe73%3A0x3e72db09829a33cf!2sDogily%20Petshop!5e0!3m2!1sen!2s!4v1692457659682!5m2!1sen!2s"></iframe>            
+			</div>
+        </div>
+    </div>
+    <!-- Contact End -->
+    
+    <!-- Footer Start -->
+	<div th:replace="client/fragments.html :: footer"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/resources/js/easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment-timezone.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+    <!-- Contact Javascript File -->
+    <script type="text/javascript" th:src="@{/resources/js/jqBootstrapValidation.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/contact.js}"></script>
+
+    <!-- Template Javascript -->
+    <script type="text/javascript" th:src="@{/resources/js/main.js}"></script>
+</body>
+
+</html>

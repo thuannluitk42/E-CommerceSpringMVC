@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="client/fragments.html :: html_head" />
+
+<body>
+	<!-- Topbar Start -->
+	<div th:replace="client/fragments.html :: topbar"></div>
+	<!-- Topbar End -->
+	<!-- Navbar Start -->
+	<div th:replace="client/fragments.html :: navbar"></div>
+	<!-- Navbar End -->
+
+    <!-- Services Start -->
+    <div class="container-fluid bg-light pt-5">
+        <div class="container py-5">
+            <div class="d-flex flex-column text-center mb-5">
+                <h1 class="display-4 m-0"><span class="text-primary">Giới thiệu chương trình khách hàng thành viên Pethouser</span> </h1>
+            </div>
+			<div class="list-group">
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+			    	<div class="d-flex w-100 justify-content-between">
+			     	   <h5 class="mb-1">1. Pethouse Membership là gì?</h5>
+			    	</div>
+			    	<p class="mb-1">Pethouse Membership là một chương trình tích điểm thành viên của Pethouse nhằm tri ân khách hàng thân thiết. 
+			    					Khi tham gia, bạn sẽ nhận được những ưu đãi vô cùng hấp dẫn khi đạt được các hạng mức định sẵn. 
+			    					Pethouser sẽ được thăng hạng ngay khi đạt đủ số điểm yêu cầu ở hạng mức đó và tiếp tục tích luỹ ở hạng mức tiếp theo. 
+			    					Vậy làm sao để trở thành Pethouser? </p>
+			    	<p class="mb-1">Chỉ cần khách hàng phát sinh 01 đơn hàng và cung cấp số điện thoại để nhập vào hệ thống là đã trở thành Pethouser. 
+			    					Các đơn hàng sau sẽ cộng dồn cho đến khi đạt hạng mức. </p>
+			    	<p class="mb-1">Lưu ý: Chỉ áp dụng tích điểm khi khách hàng mua thông qua:</p>
+			    	<p class="mb-1">Kênh Online: Website Pethouse.vn, Hotline, Zalo, Fanpage, Instagram</p>
+			    	<p class="mb-1">Kênh Offline:</p>
+			    	<p class="mb-1">- 168 Trường Sa, phường 1, Bình Thạnh, Tp. HCM</p>
+			    	<p class="mb-1">- 412/3 Nơ Trang Long, phường 13, Bình Thạnh, Tp. HCM</p>
+			  </a>
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">2. Chương trình khách hàng thân thiết - Pethouser Membership mới (01/07/2023).</h5>
+				    </div>
+				    <img class="img-fluid w-100" th:src="@{/resources/images/loyal_customer.png}" alt="Khach hang than thiet"></img>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1" style="color: #00aaff;">Thành Viên Mới (Pethouser)</h5>
+				    </div>
+					<p class="mb-1">- Điều kiện: Khách hàng phát sinh 01 đơn hàng sẽ trở thành Pethouser</p>
+					<p class="mb-1">- Quyền lợi:</p>
+					<p class="mb-1">+ Tích luỹ điểm thành viên</p>
+					<p class="mb-1">+ Nhận thông tin các chương trình ưu đãi mới nhất</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1" style="color: #00aaff;">Thành Viên Bạc (Silver)</h5>
+				    </div>
+					<p class="mb-1">- Quyền lợi:</p>
+					<p class="mb-1">+ Voucher 50.000VND thăng hạng</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1" style="color: #00aaff;">Thành Viên Vàng (Gold)</h5>
+				    </div>
+					<p class="mb-1">- Điều kiện: Điểm tích luỹ luỹ kế trong một năm đạt từ 5.000.000VND</p>
+					<p class="mb-1">- Quyền lợi:</p>
+					<p class="mb-1">+ Voucher 100.000VND thăng hạng</p>
+					<p class="mb-1">+ Freeship tối đa 30.000VND cho các đơn giao hàng từ 500.000VND</p>
+					<p class="mb-1">+ Ưu đãi giảm 3% 01 đơn hàng trong tuần sinh nhật Pethouse (áp dụng cộng dồn nhiều CTKM khác nếu có)</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1" style="color: #00aaff;">Thành Viên Bạch Kim (Platinum)</h5>
+				    </div>
+					<p class="mb-1">- Điều kiện: Điểm tích luỹ luỹ kế trong một năm đạt từ 10.000.000VND</p>
+					<p class="mb-1">- Quyền lợi:</p>
+					<p class="mb-1">+ Voucher 250.000VND thăng hạng</p>
+					<p class="mb-1">+ Freeship tối đa 30.000VND cho các đơn giao hàng từ 400.000VND</p>
+					<p class="mb-1">+ Ưu đãi giảm 4% 01 đơn hàng trong tuần sinh nhật Pethouse (áp dụng cộng dồn nhiều CTKM khác nếu có)</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1" style="color: #00aaff;">Thành Viên Kim Cương (Diamond)</h5>
+				    </div>
+					<p class="mb-1">- Điều kiện: Điểm tích luỹ luỹ kế trong một năm đạt từ 20.000.000VND </p>
+					<p class="mb-1">- Quyền lợi:</p>
+					<p class="mb-1">+ Freeship tối đa 30.000VND cho các đơn giao hàng từ 300.000VND</p>
+					<p class="mb-1">+ Ưu đãi giảm 5% 01 đơn hàng trong tuần sinh nhật Pethouse (áp dụng cộng dồn nhiều CTKM khác nếu có)</p>
+					<p class="mb-1">+ Các chương trình khuyến mãi độc quyền</p>
+					<p class="mb-1">+ Mẫu dùng thử các sảm phẩm mới</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1" style="color: #00aaff;">Thành Viên Kim Cương Plus (Diamond+)</h5>
+				    </div>
+					<p class="mb-1">- Điều kiện: Điểm tích luỹ luỹ kế trong một năm đạt từ 30.000.000VND </p>
+					<p class="mb-1">- Quyền lợi:</p>
+					<p class="mb-1">+ Voucher 500.000VND thăng hạng mỗi 10.000.000VND tiếp theo</p>
+					<p class="mb-1">+ Freeship tối đa 30.000VND cho tất cả các đơn</p>
+					<p class="mb-1">+ Ưu đãi giảm 6% 01 đơn hàng trong tuần sinh nhật Pethouse (áp dụng cộng dồn nhiều CTKM khác nếu có)</p>
+					<p class="mb-1">+ Các chương trình khuyến mãi độc quyền</p>
+					<p class="mb-1">+ Mẫu dùng thử các sảm phẩm mới</p>
+			  </a>
+			  <p>Nếu bạn có bất cứ thắc mắc liên quan đến chương trình Thành viên Pethouse, xin vui lòng liên hệ tới hotline 012 266 999 208 hoặc inbox Fanpage.</p>
+			</div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+    <!-- Footer Start -->
+	<div th:replace="client/fragments.html :: footer"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/resources/js/easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment-timezone.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+    <!-- Contact Javascript File -->
+    <script type="text/javascript" th:src="@{/resources/js/jqBootstrapValidation.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/contact.js}"></script>
+
+    <!-- Template Javascript -->
+    <script type="text/javascript" th:src="@{/resources/js/main.js}"></script>
+</body>
+
+</html>

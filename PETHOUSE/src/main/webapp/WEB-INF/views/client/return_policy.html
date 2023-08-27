@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="client/fragments.html :: html_head" />
+
+<body>
+
+	<!-- Topbar Start -->
+	<div th:replace="client/fragments.html :: topbar"></div>
+	<!-- Topbar End -->
+	<!-- Navbar Start -->
+	<div th:replace="client/fragments.html :: navbar"></div>
+	<!-- Navbar End -->
+    <!-- Services Start -->
+    <div class="container-fluid bg-light pt-5">
+        <div class="container py-5">
+            <div class="d-flex flex-column text-center mb-5">
+<!--                 <h4 class="text-secondary mb-3">Dịch vụ</h4> -->
+                <h1 class="display-4 m-0"><span class="text-primary">CHÍNH SÁCH ĐỔI – TRẢ HÀNG</span> </h1>
+            </div>
+			<div class="list-group">
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+			    	<div class="d-flex w-100 justify-content-between">
+			     	   <h5 class="mb-1">Đổi hàng – trả hàng miễn phí</h5>
+			    	</div>
+			    <p class="mb-1">Bên mua sẽ được đổi hàng – trả hàng miễn phí trong thời gian 07 (bảy) ngày kể từ khi nhận hàng hóa với điều kiện: hàng hóa chưa qua sử dụng còn nguyên tem mác, nguyên kiện và có đầy đủ hóa đơn mua hàng.</p>
+			  </a>
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Đổi hàng – trả hàng tính phí</h5>
+				    </div>
+				    <p class="mb-1">– Đối với hàng hóa chưa qua sử dụng, còn nguyên tem mác, nguyên kiện và có đầy đủ hóa đơn mua hàng: từ ngày thứ 8 đến ngày thứ 15 sau khi nhận hàng hóa nếu bên mua có nhu cầu muốn đổi sản phẩm khác hoặc trả lại sản phẩm thì sẽ áp dụng mức phí là 15% giá trị sản phẩm.</p>
+				  	<p class="mb-1">– Đối với hàng hóa đã tháo vỏ bao bì, tem mác, trong vòng 15 ngày:</p>
+				  	<p class="mb-1">+  Bên mua đổi sản phẩm khác mất phí 15% giá trị sản phẩm.</p>
+				  	<p class="mb-1">+  Bên mua Trả sản phẩm mất phí 30% giá trị sản phẩm.</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Không áp dụng đổi – trả hàng:</h5>
+				    </div>
+				    <p class="mb-1">– Sản phẩm mua trong các chương trình khuyến mại, giảm giá, sử dụng phiếu mua hàng (voucher), điểm tích lũy.</p>
+				  	<p class="mb-1">– Sản phẩm bên mua đã nhận hàng vượt quá 15 ngày kể từ ngày ghi trên hóa đơn mua hàng.</p>
+				  	<p class="mb-1">– Sản phẩm đặt riêng theo yêu cầu (ví dụ: Thẻ tên)</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Điều khoản vận chuyển sản phẩm đổi – trả:</h5>
+				    </div>
+				    <p class="mb-1">Bên mua phải tự vận chuyển sản phẩm đổi – trả đến nơi mua hàng hoặc chịu toàn bộ chi phí vận chuyển sản phẩm đổi hoặc trả theo quy định của bên bán.</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">Xuất trả hóa đơn VAT:</h5>
+				    </div>
+				    <p class="mb-1">Do bên bán sử dụng hoá đơn điện tử và xuất hoá đơn trong ngày bán hàng, chính vì vậy:</p>
+			  		<p class="mb-1">Trong mọi trường hợp đổi hàng – trả hàng nếu bên mua đã lấy hóa đơn VAT (hóa đơn giá trị gia tăng) thì bên mua có trách nhiệm xuất hóa đơn VAT hoàn trả chính xác các sản phẩm cần đổi – trả cho bên bán. Nếu bên mua không xuất hóa đơn VAT lại cho bên bán của sản phẩm đổi – trả thì bên bán có quyền hủy hóa đơn có sản phẩm đổi – trả.</p>
+			  </a>
+			</div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+    <!-- Footer Start -->
+	<div th:replace="client/fragments.html :: footer"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/resources/js/easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment-timezone.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+    <!-- Contact Javascript File -->
+    <script type="text/javascript" th:src="@{/resources/js/jqBootstrapValidation.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/contact.js}"></script>
+
+    <!-- Template Javascript -->
+    <script type="text/javascript" th:src="@{/resources/js/main.js}"></script>
+</body>
+
+</html>

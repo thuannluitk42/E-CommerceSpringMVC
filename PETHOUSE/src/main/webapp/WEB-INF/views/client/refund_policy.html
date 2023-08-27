@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="client/fragments.html :: html_head" />
+
+<body>
+	<!-- Topbar Start -->
+	<div th:replace="client/fragments.html :: topbar"></div>
+	<!-- Topbar End -->
+	<!-- Navbar Start -->
+	<div th:replace="client/fragments.html :: navbar"></div>
+	<!-- Navbar End -->
+
+    <!-- Services Start -->
+    <div class="container-fluid bg-light pt-5">
+        <div class="container py-5">
+            <div class="d-flex flex-column text-center mb-5">
+                <h1 class="display-4 m-0"><span class="text-primary">Chính sách hoàn tiền</span> </h1>
+                <h4 class="text-secondary mb-3">Chính sách đổi trả hàng tại Pethouse</h4>
+                <p class="text-secondary mb-3">Nhằm giúp bạn thấy thoải mái và an tâm hơn khi mua sắm tại Pethouse Pet Shop, khách hàng và thành viên Pethouse hoàn toàn có thể đổi hoặc trả sản phẩm sau khi mua hàng.</p>
+            </div>
+			<div class="list-group">
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+			    	<div class="d-flex w-100 justify-content-between">
+			     	   <h5 class="mb-1">1. Khách hàng được kiểm tra sản phẩm trước khi nhận hàng</h5>
+			    	</div>
+			    	<p class="mb-1">Pethouse khuyến khích khách hàng nên kiểm tra sản phẩm trước khi thanh toán, 
+			    					hoặc sau khi nhận được hàng nhằm giúp khách hàng an tâm và thoải mái hơn khi lựa chọn mua sắm tại Pethouse.</p>
+			  </a>
+			  <a class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">2. Tình trạng sản phẩm được đổi hoặc trả </h5>
+				    </div>
+				    <p class="mb-1">Hàng hóa đổi/trả cần kèm theo hóa đơn mua hàng gốc từ Pethouse và còn hạn sử dụng kèm theo:</p>
+					<p class="mb-1">- Còn nguyên tem, nhãn, bao bì, seal.</p>
+					<p class="mb-1">- Bao bì SP không nhàu nát, xé rách, lủng lỗ</p>
+					<p class="mb-1">- Chưa qua sử dụng (mới 100%).</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">3. Thời hạn đổi/trả sản phẩm</h5>
+				    </div>
+				    <p class="mb-1">Đối với Hạt - thức ăn khô, Pate - thức ăn ướt, Xương - thức ăn ặt, Sữa bột - sữa nước, 
+				    				Vitamin - thuốc bổ, Thuốc xổ giun, Sữa tắm - nước hoa, Dung dịch đặc trị, Dung dịch chăm sóc, 
+				    				Dung dịch sát khuẩn - khử mùi, Đồ chơi các loại, Vật dụng chăm sóc</p>
+				    <p class="mb-1">Thời gian đổi/trả áp dụng: trong vòng 5 ngày kể từ khi bạn nhận được sản phẩm.</p>
+				    <p class="mb-1">Các danh mục sản phẩm còn lại tuỳ thuộc vào chính sách của Pethouse</p>
+			  </a>
+			  <a  class="list-group-item list-group-item-action flex-column align-items-start">
+				    <div class="d-flex w-100 justify-content-between">
+				      <h5 class="mb-1">4. Phương thức đổi/trả và thời gian giải quyết</h5>
+				    </div>
+				    <p class="mb-1">Khi nhận được yêu cầu đổi/trả sản phẩm, Pethouse sẽ cố gắng giải quyết trong vòng 24h từ lúc nhận được yêu cầu. Khách hàng vui lòng lưu ý:</p>
+				    <p class="mb-1">- Bạn không tốn phí đổi/trả sản phẩm.</p>
+					 <p class="mb-1">- Bạn có thể đổi/trả sản phẩm tại cửa hàng  (168 Trường Sa) hoặc yêu cầu dịch vụ chuyển phát, bạn thanh toán phí vận chuyển phát sinh.</p>
+					 <p class="mb-1">- Khi bạn yêu cầu đổi/trả sản phẩm sau thời gian đổi/trả tại, chúng tôi có thể từ chối giải quyết.</p>
+					 <p class="mb-1">Đơn hàng được xác nhận là lỗi sai sót (hàng hóa, số lượng, giao hàng…) từ phía Pethouse, 
+					 				chúng tôi sẽ đổi sản phẩm cho bạn trong vòng 24-48h kể từ khi nhận được thông báo, áp dụng cho tất cả đơn hàng nội thành 
+					 				và các tỉnh thành khác. Chúng tôi khuyến khích bạn nên kiểm tra sản phẩm trước khi thanh toán.</p>
+			  </a>
+			</div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+    <!-- Footer Start -->
+	<div th:replace="client/fragments.html :: footer"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/resources/js/easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment-timezone.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+    <!-- Contact Javascript File -->
+    <script type="text/javascript" th:src="@{/resources/js/jqBootstrapValidation.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/contact.js}"></script>
+
+    <!-- Template Javascript -->
+    <script type="text/javascript" th:src="@{/resources/js/main.js}"></script>
+</body>
+
+</html>
