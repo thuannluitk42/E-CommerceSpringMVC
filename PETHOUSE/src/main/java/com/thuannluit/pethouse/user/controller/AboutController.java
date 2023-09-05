@@ -16,7 +16,7 @@ public class AboutController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@RequestMapping(path = { "/about" }, method = RequestMethod.GET)
+	@RequestMapping(path = { "/about-me" }, method = RequestMethod.GET)
 	public String viewAboutPage(Model model) {
 		List<Categories> categories = this.categoryService.getCategories();
 		model.addAttribute("listCategory", categories);

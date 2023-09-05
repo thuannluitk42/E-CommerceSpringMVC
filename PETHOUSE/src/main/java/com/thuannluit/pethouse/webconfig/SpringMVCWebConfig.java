@@ -5,6 +5,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
@@ -19,7 +21,7 @@ import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 
 @EnableWebMvc // mvc:annotation-driven
 @Configuration
-@ComponentScan("com.thuannlu.*")
+@ComponentScan("com.thuannluit.pethouse.*")
 @EnableTransactionManagement
 public class SpringMVCWebConfig implements WebMvcConfigurer {
 	@Autowired
@@ -68,68 +70,15 @@ public class SpringMVCWebConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
 	}
-	
+
 	@Bean
-	public AuthenticationSuccessHandler customSuccessHandler(){
-	    return new CustomSuccessHandler();
+	public AuthenticationSuccessHandler customSuccessHandler() {
+		return new CustomSuccessHandler();
 	}
-	
-//    @Bean
-//    public LocalEntityManagerFactoryBean entityManagerFactory() {
-//        LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
-//        factoryBean.setPersistenceUnitName("sessionFactory");
-//          
-//        return factoryBean;
-//    }
-//      
-//    @Bean
-//    public JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-//        JpaTransactionManager transactionManager = new JpaTransactionManager();
-//        transactionManager.setEntityManagerFactory(entityManagerFactory);
-//          
-//        return transactionManager;
-//    } 
-	
-//	@Bean
-//	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-//		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-//		em.setDataSource(dataSource());
-//		em.setPersistenceUnitName("persistence-data");
-//		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-//		em.setJpaVendorAdapter(vendorAdapter);
-//		em.setJpaProperties(additionalProperties());
-//		return em;
-//	}
-//	
-//	@Bean
-//	JpaTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
-//		JpaTransactionManager transactionManager = new JpaTransactionManager();
-//		transactionManager.setEntityManagerFactory(entityManagerFactory);
-//		return transactionManager;
-//	}
-//	
-//	@Bean
-//	public PersistenceExceptionTranslationPostProcessor exceptionTranslation() {
-//		return new PersistenceExceptionTranslationPostProcessor();
-//	}
-//	
-//	@Bean
-//	public DataSource dataSource() {
-//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-//		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-//		dataSource.setUrl("jdbc:mysql://localhost:3306/springmvcbasicfree");
-//		dataSource.setUsername("root");
-//		dataSource.setPassword("1234");
-//		return dataSource;
-//	}
-//	
-//	Properties additionalProperties() {
-//		Properties properties = new Properties();
-//		//properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-//		//properties.setProperty("hibernate.hbm2ddl.auto", "create");
-//		properties.setProperty("hibernate.hbm2ddl.auto", "none");
-//		properties.setProperty("hibernate.enable_lazy_load_no_trans", "true");
-//		return properties;
-//	}
-	
+
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
 }

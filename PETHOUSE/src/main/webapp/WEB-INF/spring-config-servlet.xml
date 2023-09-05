@@ -12,51 +12,26 @@
 	<context:component-scan base-package="com.thuannluit.pethouse"></context:component-scan>
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven />
-	<!-- Step 1: Define Database DataSource / connection pool -->
-	<bean id="myDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/web_thuongmaidientu?characterEncoding=UTF-8" />
-		<property name="username" value="root" />
-		<property name="password" value="" />
-	</bean>
-	<!-- Step 2: Setup Hibernate session factory -->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-		<property name="dataSource" ref="myDataSource" />
-		<property name="packagesToScan" value="com.thuannluit.pethouse.entity" />
-		<property name="hibernateProperties">
-			<props>
-				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
-				<prop key="hibernate.hbm2ddl.auto">update</prop>
-			</props>
-		</property>
-	</bean>
-	<!-- Step 3: Setup Hibernate transaction manager -->
-	<bean id="myTransactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
-	</bean>
-	<!-- Step 4: Enable configuration of transactional behavior based on annotations -->
-	<tx:annotation-driven transaction-manager="myTransactionManager" />
 
 	<!-- Add support for reading web resources: css, images, js, etc ... -->
 	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	
 	<!-- send e-mail messages -->
-	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<!-- SMTP settings -->
+<!-- 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		SMTP settings
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
 		<property name="username" value="levanthuan23031998@gmail.com" />
 		<property name="password" value="yhbibemyxtlfxrzm" />
 
 		<property name="javaMailProperties">
-			<!-- additional properties specific to JavaMail -->
+			additional properties specific to JavaMail
 			<props>
 				<prop key="mail.transport.protocol">smtp</prop>
 				<prop key="mail.smtp.auth">true</prop>
 				<prop key="mail.smtp.starttls.enable">true</prop>
 			</props>
 		</property>
-	</bean>
+	</bean> -->
 
 </beans>

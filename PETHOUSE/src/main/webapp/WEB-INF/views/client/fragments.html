@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> -->
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -16,7 +16,6 @@
     <!-- Libraries Stylesheet -->
     <link th:href="@{/resources/css/owl.carousel.min.css}" rel="stylesheet"/>
     <link th:href="@{/resources/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet"/>
-
     <!-- Customized Bootstrap Stylesheet -->
      <link th:href="@{/resources/css/style.css}" rel="stylesheet"/>
 </head>
@@ -54,7 +53,7 @@
     <div th:fragment="navbar" class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
             <a href="" class="navbar-brand d-block d-lg-none">
-                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Safety</span>First</h1>
+                <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Pet</span>House</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
@@ -62,20 +61,38 @@
             <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
                 <div class="navbar-nav mr-auto py-0">
                     <a th:href="@{/index}" class="nav-item nav-link" th:classappend="${isIndex} ? active : ''">Trang chủ</a>
-                    <a th:href="@{/about}" class="nav-item nav-link" th:classappend="${isAbout} ? active : ''">Về chúng tôi</a>
+                    <a th:href="@{/about-me}" class="nav-item nav-link" th:classappend="${isAbout} ? active : ''">Về chúng tôi</a>
                     <a th:href="@{/service}" class="nav-item nav-link" th:classappend="${isService} ? active : ''">Dịch vụ</a>
                     <a th:href="@{/book}" class="nav-item nav-link" th:classappend="${isBook} ? active : ''">Đặt chỗ</a>
                     <div class="nav-item dropdown">
-                        <a th:href="@{/#}" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cửa hàng</a>
+                        <a th:href="@{/shop}" class="nav-link dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Cửa hàng</a>
 	                        <div class="dropdown-menu rounded-0 m-0">
 	                            <a th:href="@{/shop(id=${category.categoryId})}" class="dropdown-item" th:each="category: ${listCategory}" th:text="${category.categoryName}"></a>
 	                        </div>
                     </div>
                     <a th:href="@{/contact}" class="nav-item nav-link" th:classappend="${isContact} ? active : ''">Liên hệ</a>
-                    <a th:href="@{/login}" class="nav-item nav-link" th:classappend="${isLogin} ? active : ''">Đăng nhập</a>
-                    <a th:href="@{/register}" class="nav-item nav-link" th:classappend="${isRegister} ? active : ''">Đăng ký</a>
+					<!-- IF CUSTOMER IS ANONYMOUS -->
+						<a th:if="${#session.getAttribute('customerModel')} == null" th:href="@{/login}" class="nav-item nav-link" th:classappend="${isLoginPage} ? active : ''">Đăng nhập</a>
+	                    <a th:if="${#session.getAttribute('customerModel')} == null" th:href="@{/register}" class="nav-item nav-link" th:classappend="${isRegister} ? active : ''">Đăng ký</a>
+					<!-- ELSE -->
+	                    <div class="nav-item dropdown" th:if="${#session.getAttribute('customerModel')} != null">
+	                        <a th:href="@{/#}" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text=" 'Hi,' + ${session.customerModel['username']}"></a>
+		                        <div class="dropdown-menu rounded-0 m-0">
+		                            <a th:href="@{/#}" class="dropdown-item"> Tài khoản của tôi</a>
+		                            <a th:href="@{/#}" class="dropdown-item"> Đơn mua</a>
+		                            <a th:href="@{/logout}" class="dropdown-item"> Đăng xuất</a>
+		                        </div>
+	                    </div>
                 </div>
-                <a href="" class="btn btn-lg btn-primary px-3 d-none d-lg-block"><img th:src="@{/resources/images/add-to-cart.png}" style="display: block;border: 0px;width: 30px;height: 30px;" /></a>
+                <form class="d-flex">
+                        <button class="btn btn-outline-primary " type="submit">
+                            <svg style="margin-right: 0.25rem" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+  								<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+							</svg>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
             </div>
         </nav>
     </div>
@@ -89,11 +106,11 @@
                     <img class="w-100" th:src="@{/resources/images/carousel-1.jpg}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h3 class="text-white mb-3 d-none d-sm-block">Best Pet Services</h3>
-                            <h1 class="display-3 text-white mb-3">Keep Your Pet Happy</h1>
-                            <h5 class="text-white mb-3 d-none d-sm-block">Duo nonumy et dolor tempor no et. Diam sit diam sit diam erat</h5>
-                            <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a>
-                            <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
+                            <h3 class="text-white mb-3 d-none d-sm-block">Chăm sóc VIP</h3>
+                            <h1 class="display-3 text-white mb-3">Giữ pet của bạn vui vẻ</h1>
+                            <h5 class="text-white mb-3 d-none d-sm-block">Đem lại những trải nghiệm tốt nhất đến pet của bạn</h5>
+                            <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Đặt chỗ ngay</a>
+                            <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Xem thêm</a>
                         </div>
                     </div>
                 </div>
@@ -101,11 +118,11 @@
                     <img class="w-100" th:src="@{/resources/images/carousel-2.jpg}" alt="Image">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 900px;">
-                            <h3 class="text-white mb-3 d-none d-sm-block">Best Pet Services</h3>
-                            <h1 class="display-3 text-white mb-3">Pet Spa & Grooming</h1>
-                            <h5 class="text-white mb-3 d-none d-sm-block">Duo nonumy et dolor tempor no et. Diam sit diam sit diam erat</h5>
-                            <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Book Now</a>
-                            <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Learn More</a>
+                            <h3 class="text-white mb-3 d-none d-sm-block">Chăm sóc VIP</h3>
+                            <h1 class="display-3 text-white mb-3">Giữ pet luôn thơm tho</h1>
+                            <h5 class="text-white mb-3 d-none d-sm-block">Đem lại những trải nghiệm tốt nhất đến pet của bạn</h5>
+                            <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Đặt chỗ ngay</a>
+                            <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Xem thêm</a>
                         </div>
                     </div>
                 </div>
@@ -150,7 +167,7 @@
 	                    <div class="col-md-4 mb-5">
 	                        <h5 class="text-primary mb-4">Pet House</h5>
 	                        <div class="d-flex flex-column justify-content-start">
-	                            <a class="text-white mb-2" th:href="@{/about}"><i class="fa fa-angle-right mr-2"></i>Giới Thiệu</a>
+	                            <a class="text-white mb-2" th:href="@{/about-me}"><i class="fa fa-angle-right mr-2"></i>Giới Thiệu</a>
 	                            <a class="text-white mb-2" th:href="@{/loyal-customer}"><i class="fa fa-angle-right mr-2"></i>Thành Viên Pet House</a>
 	                            <a class="text-white mb-2" th:href="@{/terms-of-service}"><i class="fa fa-angle-right mr-2"></i>Điều Khoản Dịch Vụ</a>
 	                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Tuyển Dụng</a>
@@ -196,6 +213,21 @@
 	            </div>
 	        </div>
 	    </div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" th:src="@{/resources/js/easing.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/owl.carousel.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/moment-timezone.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+    <!-- Contact Javascript File -->
+    <script type="text/javascript" th:src="@{/resources/js/jqBootstrapValidation.min.js}"></script>
+    <script type="text/javascript" th:src="@{/resources/js/contact.js}"></script>
+
+    <!-- Template Javascript -->
+    <script type="text/javascript" th:src="@{/resources/js/main.js}"></script>
     </div>
     <!-- Footer End -->
 </body>

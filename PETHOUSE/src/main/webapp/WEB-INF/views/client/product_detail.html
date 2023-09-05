@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="client/fragments.html :: html_head">
+	<style type="text/css">
+	.product-rating-overview__stars {
+	    font-size: 1.25rem;
+	    margin-top: 0.625rem;
+	}
+	.shopee-rating-stars {
+	    position: relative;
+	    display: inline-block;
+	}
+	.shopee-rating-stars__star-wrapper>.shopee-rating-stars__lit {
+	    overflow: hidden;
+	    position: absolute;
+	    height: 100%;
+	    left: 0;
+	    top: 0;
+	    z-index: 1;
+	}
+	.shopee-rating-stars__primary-star {
+	    color: #ee4d2d;
+	    stroke: #ee4d2d;
+	    display: block;
+	    position: absolute;
+	    left: 0;
+	    overflow-x: hidden;
+	}
+	.shopee-svg-icon {
+	    display: inline-block;
+	    width: 1em;
+	    height: 1em;
+	    fill: currentColor;
+	    position: relative;
+	}
+	</style>
+</head>
+<body>
+	<!-- Topbar Start -->
+	<div th:replace="client/fragments.html :: topbar"></div>
+	<!-- Topbar End -->
+	<!-- Navbar Start -->
+	<div th:replace="client/fragments.html :: navbar"></div>
+	<!-- Navbar End -->
+
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5 align-items-center">
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col-md-6">
+                    	<img class="card-img-top" style="margin-bottom: 100px" th:src="@{/resources/images/domixi.png}" alt="..." />
+						<div class="container text-center my-3">
+						    <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+						        <div class="carousel-inner w-100" role="listbox">
+						            <div class="carousel-item row no-gutters active">
+						                <div class="col-3 float-left"><img style="height: 82px; width: 82px" class="img-fluid" th:src="@{/resources/images/domixi.png}"></div>
+						                <div class="col-3 float-left"><img style="height: 82px; width: 82px" class="img-fluid" th:src="@{/resources/images/domixi.png}"></div>
+						                <div class="col-3 float-left"><img style="height: 82px; width: 82px" class="img-fluid" th:src="@{/resources/images/domixi.png}"></div>
+						                <div class="col-3 float-left"><img style="height: 82px; width: 82px" class="img-fluid" th:src="@{/resources/images/domixi.png}"></div>
+						            </div>
+						            <div class="carousel-item row no-gutters">
+						                <div class="col-3 float-left"><img style="height: 82px; width: 82px" class="img-fluid" th:src="@{/resources/images/domixi.png}"></div>
+						                <div class="col-3 float-left"><img style="height: 82px; width: 82px" class="img-fluid" th:src="@{/resources/images/domixi.png}"></div>
+						                <div class="col-3 float-left"><img style="height: 82px; width: 82px" class="img-fluid" th:src="@{/resources/images/domixi.png}"></div>
+						                <div class="col-3 float-left"><img style="height: 82px; width: 82px" class="img-fluid" th:src="@{/resources/images/domixi.png}"></div>
+						            </div>
+						        </div>
+						        <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
+						            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						            <span class="sr-only">Previous</span>
+						        </a>
+						        <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
+						            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						            <span class="sr-only">Next</span>
+						        </a>
+						    </div>
+						</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="small mb-1">SKU: BST-498</div>
+                        <h1 class="display-5 fw-bolder">Tắm khô</h1>
+                        <!-- Product reviews-->
+                        <div class="d-flex small mb-2" style="color: #ED6436">
+                             <p style="font-size: 17px;margin-right: 8px;text-decoration-line: underline;">3.5</p>
+                            <div style="margin-right: 10px;">
+
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+							</svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+							</svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+							</svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+							</svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+							</svg>
+                            </div>
+                            <p style="font-size: 17px;margin-right: 10px; "> <span style="text-decoration: underline;margin-right: 2px;"> 01</span> Đánh giá</p>
+                            <p style="font-size: 17px;"><span style="text-decoration: underline;margin-right: 2px;"> 5000</span>Đã Bán</p>
+                        </div>
+                        <div class="fs-5 mb-5">
+                            <span class="text-decoration-line-through" style="text-decoration: line-through">$45.00</span>
+                            <span>$40.00</span>
+                        </div>
+                        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                        <div class="d-flex" style="color: #757575;margin-top: 16px">
+                        	<label class="oN9nMU" style="color: #757575;width: 110px;text-transform: capitalize;flex-shrink: 0;">Vận Chuyển</label>
+							<div class="_4ZQRNI F6amdq">
+							   <div class="flex"></div>
+							   <div class="mHANnI">
+							      <img src="https://deo.shopeemobile.com/shopee/shopee-pcmall-live-sg/d9e992985b18d96aab90969636ebfd0e.png" height="20" class="BLuvNY">
+							      <div class="WZTmVh">
+							         <div class="thuanMddj">
+							            <div>Miễn phí vận chuyển</div>
+							         </div>
+							         <div class="_7K5or9">Miễn phí vận chuyển cho đơn hàng trên ₫</div>
+							      </div>
+							      <div class="iuDG9e">
+									<img th:src="@{/resources/images/delivery-truck.png}"  style="height: 30px;"alt="Image">
+							      </div>
+							      <div class="flex flex-column cZexSD">
+							         <div class="flex items-center J9pM3L">
+							            <div class="_82o6pM">Vận chuyển tới</div>
+							            <div class="flex items-center nphO3q">
+							               <div class="flex items-center">
+							                  <div class="-BfSMx">
+							                     <div class="flex items-center">
+							                        <span class="jqPI6Z">Phường Hiệp Bình Chánh, Thành Phố Thủ Đức</span>
+							                        <svg enable-background="new 0 0 11 11" viewBox="0 0 11 11" x="0" y="0" class="shopee-svg-icon icon-arrow-down">
+							                           <g>
+							                              <path d="m11 2.5c0 .1 0 .2-.1.3l-5 6c-.1.1-.3.2-.4.2s-.3-.1-.4-.2l-5-6c-.2-.2-.1-.5.1-.7s.5-.1.7.1l4.6 5.5 4.6-5.5c.2-.2.5-.2.7-.1.1.1.2.3.2.4z"></path>
+							                           </g>
+							                        </svg>
+							                     </div>
+							                  </div>
+							               </div>
+							            </div>
+							         </div>
+							         <div class="qhBwbq">
+							            <div class="_82o6pM">phí vận chuyển</div>
+							            <div>
+							               <div class="shopee-drawer" id="pc-drawer-id-1" tabindex="0">
+							                  <div class="flex items-center IwHyBY">
+							                     ₫0 - ₫22.000
+							                     <svg enable-background="new 0 0 11 11" viewBox="0 0 11 11" x="0" y="0" class="shopee-svg-icon icon-arrow-down">
+							                        <g>
+							                           <path d="m11 2.5c0 .1 0 .2-.1.3l-5 6c-.1.1-.3.2-.4.2s-.3-.1-.4-.2l-5-6c-.2-.2-.1-.5.1-.7s.5-.1.7.1l4.6 5.5 4.6-5.5c.2-.2.5-.2.7-.1.1.1.2.3.2.4z"></path>
+							                        </g>
+							                     </svg>
+							                  </div>
+							               </div>
+							            </div>
+							         </div>
+							      </div>
+							   </div>
+							</div>
+                        </div>
+                        <div class="d-flex" style="color: #757575;margin-top: 16px;align-items: center;">
+                        	<div style="color: #757575;width: 110px;text-transform: capitalize;flex-shrink: 0;">Màu sắc</div>
+                        </div>
+                        <div class="d-flex" style="color: #757575;margin-top: 16px;align-items: center;">
+                        	<div style="color: #757575;width: 110px;text-transform: capitalize;flex-shrink: 0;">Số Lượng</div>
+							<div class="d-flex" style="align-items: center;">
+								<div style="margin-right: 15px;">
+									<div class="nk20eP" style="background: #fff">
+										<button class="qXyKaf"><svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="shopee-svg-icon"><polygon points="4.5 4.5 3.5 4.5 0 4.5 0 5.5 3.5 5.5 4.5 5.5 10 5.5 10 4.5"></polygon></svg></button>
+										<input class="MBfLRp" style="width: 50px;" type="text" role="spinbutton" aria-valuenow="1" value="1">
+										<button class="qXyKaf"><svg enable-background="new 0 0 10 10" viewBox="0 0 10 10" x="0" y="0" class="shopee-svg-icon icon-plus-sign"><polygon points="10 4.5 5.5 4.5 5.5 0 4.5 0 4.5 4.5 0 4.5 0 5.5 4.5 5.5 4.5 10 5.5 10 5.5 5.5 10 5.5"></polygon></svg></button>
+									</div>
+								</div>
+                            	<div>353 sản phẩm có sẵn</div>
+							</div>
+                        </div>
+                        <div class="mt-5">
+                            <button class="btn btn-primary mr-3" type="button">
+		                            <svg style="margin-right: 0.25rem" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+		  								<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+									</svg>
+                                Thêm vào giỏ hàng
+                            </button>
+                            <button class="btn btn-primary" type="button">Mua Ngay</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Mo ta san pham section-->
+        <section class="py-5 bg-light mb-5">
+            <div class="container px-4 px-lg-5">
+                <h2 class="fw-bolder mb-4">MÔ TẢ SẢN PHẨM</h2>
+                <div class="row gx-4 gx-lg-5">
+                    <div class="col">
+						<h5>Dịch vụ tắm khô Dành cho chó mèo - PetHouse</h5>
+						<table class="table table-bordered" style="text-align: center;">
+						  <thead>
+						    <tr>
+						      <th rowspan="2">Cân Nặng</th>
+						      <th colspan="2" >Tắm + Vệ sinh (Grooming bath)</th>
+						    </tr>
+						    <tr>
+						      <th>Lông Ngắn</th>
+						      <th scope="col">Lông Dài</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						    <tr>
+						      <td>2kg</td>
+						      <td>70.000 đ</td>
+						      <td>90.000 đ</td>
+						    </tr>
+						    <tr>
+						      <td>2kg &lt; 5kg</td>
+						      <td>90.000 đ</td>
+						      <td>130.000 đ</td>
+						    </tr>
+						    <tr>
+						      <td>5kg &lt; 7kg</td>
+						      <td>140.000 đ</td>
+						      <td>180.000 đ</td>
+						    </tr>
+						    <tr>
+						      <td>7kg &lt; 10kg</td>
+						      <td>140.000 đ</td>
+						      <td>180.000 đ</td>
+						    </tr>
+						  </tbody>
+						</table>
+						<div>
+							<h5>DV Tắm + Vệ sinh Bao Gồm (Groming Bath)</h5>
+							<ol>
+							  <li>Vệ sinh chân, Móng, tai</li>
+							  <li>Cạo gọn lông hâu môn, bụng</li>
+							  <li>Chải lông trước tắm (Có phụ phí nếu rối)</li>
+							  <li>Vắt tuyến hôi</li>
+							  <li>Tắm 2 lần khử mùi và thơm</li>
+							  <li>Đánh Bông lông (Yêu cầu lông không rối)</li>
+							  <li>Thoa Tinh dầu dưỡng lông, Nước hoa</li>
+							</ol>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Mo ta san pham section-->
+        <section class="py-5 bg-light mb-5 mt5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <h2 class="fw-bolder mb-4">ĐÁNH GIÁ SẢN PHẨM</h2>
+                <!-- <div class="row gx-4 gx-lg-5"> -->
+					<div class="product-rating-overview" style="background-color: #fffbf8;min-height: 5rem;border: 1px solid #f9ede5;margin-bottom: 1rem;display: flex;align-items: center;border-radius: 2px;box-sizing: border-box;padding: 1.875rem;">
+					   <div class="product-rating-overview__briefing" style="text-align: center;margin-right: 1.875rem;">
+					      <div class="product-rating-overview__score-wrapper" style="color: #ee4d2d;font-size: 1.125rem;">
+					      		<span class="product-rating-overview__rating-score" style="font-size: 1.875rem;">5.0</span>
+					      		<span class="product-rating-overview__rating-score-out-of"> trên 5 </span>
+					      </div>
+					      <div class="shopee-rating-stars product-rating-overview__stars" style="color: #ED6436">
+					         <div class="shopee-rating-stars__stars" style="display: flex;">
+					            <div class="shopee-rating-stars__star-wrapper" style="position: relative;margin-right: 1px;">
+					               <div class="shopee-rating-stars__lit" style="width: 100%;">
+			                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+			  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+										</svg>
+					               </div>
+					            </div>
+					            <div class="shopee-rating-stars__star-wrapper">
+					               <div class="shopee-rating-stars__lit" style="width: 100%;">
+			                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+			  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+										</svg>
+					               </div>
+					            </div>
+					            <div class="shopee-rating-stars__star-wrapper">
+					               <div class="shopee-rating-stars__lit" style="width: 100%;">
+			                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+			  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+										</svg>
+					               </div>
+					            </div>
+					            <div class="shopee-rating-stars__star-wrapper">
+					               <div class="shopee-rating-stars__lit" style="width: 100%;">
+			                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+			  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+										</svg>
+					               </div>
+					            </div>
+					            <div class="shopee-rating-stars__star-wrapper">
+					               <div class="shopee-rating-stars__lit" style="width: 100%;">
+			                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+			  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+										</svg>
+					               </div>
+					            </div>
+					         </div>
+					      </div>
+					   </div>
+					   <div class="product-rating-overview__filters" style="flex: 1;margin-left: 0.9375rem;">
+					      <div class="product-rating-overview__filter--active" style="border-color: #ee4d2d;color:#ee4d2d;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;user-select: none;height: 2rem;line-height: 2rem;min-width: 6.25rem;text-align: center;padding: 0 0.625rem;color: rgba(0,0,0,.8);background-color: #fff;border: 1px solid rgba(0,0,0,.09);box-sizing: border-box;display: inline-block;margin-right: 0.5rem;text-decoration: none;color: rgba(0,0,0,.87);text-transform: capitalize;border-radius: 2px;margin-bottom: 0.3125rem;margin-top: 0.3125rem;">tất cả</div>
+					      <div class="product-rating-overview__filter" style="border-color: #ee4d2d;color:#ee4d2d;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;user-select: none;height: 2rem;line-height: 2rem;min-width: 6.25rem;text-align: center;padding: 0 0.625rem;color: rgba(0,0,0,.8);background-color: #fff;border: 1px solid rgba(0,0,0,.09);box-sizing: border-box;display: inline-block;margin-right: 0.5rem;text-decoration: none;color: rgba(0,0,0,.87);text-transform: capitalize;border-radius: 2px;margin-bottom: 0.3125rem;margin-top: 0.3125rem;">5 Sao (299)</div>
+					      <div class="product-rating-overview__filter" style="border-color: #ee4d2d;color:#ee4d2d;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;user-select: none;height: 2rem;line-height: 2rem;min-width: 6.25rem;text-align: center;padding: 0 0.625rem;color: rgba(0,0,0,.8);background-color: #fff;border: 1px solid rgba(0,0,0,.09);box-sizing: border-box;display: inline-block;margin-right: 0.5rem;text-decoration: none;color: rgba(0,0,0,.87);text-transform: capitalize;border-radius: 2px;margin-bottom: 0.3125rem;margin-top: 0.3125rem;">4 Sao (6)</div>
+					      <div class="product-rating-overview__filter" style="border-color: #ee4d2d;color:#ee4d2d;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;user-select: none;height: 2rem;line-height: 2rem;min-width: 6.25rem;text-align: center;padding: 0 0.625rem;color: rgba(0,0,0,.8);background-color: #fff;border: 1px solid rgba(0,0,0,.09);box-sizing: border-box;display: inline-block;margin-right: 0.5rem;text-decoration: none;color: rgba(0,0,0,.87);text-transform: capitalize;border-radius: 2px;margin-bottom: 0.3125rem;margin-top: 0.3125rem;">3 Sao (2)</div>
+					      <div class="product-rating-overview__filter" style="border-color: #ee4d2d;color:#ee4d2d;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;user-select: none;height: 2rem;line-height: 2rem;min-width: 6.25rem;text-align: center;padding: 0 0.625rem;color: rgba(0,0,0,.8);background-color: #fff;border: 1px solid rgba(0,0,0,.09);box-sizing: border-box;display: inline-block;margin-right: 0.5rem;text-decoration: none;color: rgba(0,0,0,.87);text-transform: capitalize;border-radius: 2px;margin-bottom: 0.3125rem;margin-top: 0.3125rem;">2 Sao (0)</div>
+					      <div class="product-rating-overview__filter" style="border-color: #ee4d2d;color:#ee4d2d;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;user-select: none;height: 2rem;line-height: 2rem;min-width: 6.25rem;text-align: center;padding: 0 0.625rem;color: rgba(0,0,0,.8);background-color: #fff;border: 1px solid rgba(0,0,0,.09);box-sizing: border-box;display: inline-block;margin-right: 0.5rem;text-decoration: none;color: rgba(0,0,0,.87);text-transform: capitalize;border-radius: 2px;margin-bottom: 0.3125rem;margin-top: 0.3125rem;">1 Sao (0)</div>
+					      <div class="product-rating-overview__filter" style="border-color: #ee4d2d;color:#ee4d2d;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;user-select: none;height: 2rem;line-height: 2rem;min-width: 6.25rem;text-align: center;padding: 0 0.625rem;color: rgba(0,0,0,.8);background-color: #fff;border: 1px solid rgba(0,0,0,.09);box-sizing: border-box;display: inline-block;margin-right: 0.5rem;text-decoration: none;color: rgba(0,0,0,.87);text-transform: capitalize;border-radius: 2px;margin-bottom: 0.3125rem;margin-top: 0.3125rem;">Có Bình luận (156)</div>
+					      <div class="product-rating-overview__filter" style="border-color: #ee4d2d;color:#ee4d2d;cursor: pointer;-webkit-user-select: none;-moz-user-select: none;user-select: none;height: 2rem;line-height: 2rem;min-width: 6.25rem;text-align: center;padding: 0 0.625rem;color: rgba(0,0,0,.8);background-color: #fff;border: 1px solid rgba(0,0,0,.09);box-sizing: border-box;display: inline-block;margin-right: 0.5rem;text-decoration: none;color: rgba(0,0,0,.87);text-transform: capitalize;border-radius: 2px;margin-bottom: 0.3125rem;margin-top: 0.3125rem;">Có hình ảnh / video (113)</div>
+					   </div>
+					</div>
+	                <div class="mb-5">
+	                    <h3 class="mb-4">3 Comments</h3>
+	                    <div class="media mb-4">
+	                        <img th:src="@{/resources/images/delivery-truck.png}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+	                        <div class="media-body">
+	                            <h6>John Doe</h6>
+							      <div class="shopee-rating-stars product-rating-overview__stars" style="color: #ED6436">
+							         <div class="shopee-rating-stars__stars" style="display: flex;">
+							            <div class="shopee-rating-stars__star-wrapper" style="position: relative;margin-right: 1px;">
+							               <div class="shopee-rating-stars__lit" style="width: 100%;">
+					                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+					  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+												</svg>
+							               </div>
+							            </div>
+							            <div class="shopee-rating-stars__star-wrapper">
+							               <div class="shopee-rating-stars__lit" style="width: 100%;">
+					                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+					  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+												</svg>
+							               </div>
+							            </div>
+							            <div class="shopee-rating-stars__star-wrapper">
+							               <div class="shopee-rating-stars__lit" style="width: 100%;">
+					                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+					  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+												</svg>
+							               </div>
+							            </div>
+							            <div class="shopee-rating-stars__star-wrapper">
+							               <div class="shopee-rating-stars__lit" style="width: 100%;">
+					                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+					  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+												</svg>
+							               </div>
+							            </div>
+							            <div class="shopee-rating-stars__star-wrapper">
+							               <div class="shopee-rating-stars__lit" style="width: 100%;">
+					                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+					  								<path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+												</svg>
+							               </div>
+							            </div>
+							         </div>
+							      </div>
+	                            <small><i>01 Jan 2045 at 12:00pm</i></small>
+	                            <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
+	                            <button class="btn btn-sm btn-light">Trả lời</button>
+	                        </div>
+	                    </div>
+	                    <div class="media mb-4">
+	                        <img th:src="@{/resources/images/delivery-truck.png}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+	                        <div class="media-body">
+	                            <h6>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
+	                            <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
+	                            <button class="btn btn-sm btn-light">Trả lời</button>
+	                            <div class="media mt-4">
+	                                <img th:src="@{/resources/images/delivery-truck.png}" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+	                                <div class="media-body">
+	                                    <h6>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
+	                                    <p>Diam amet duo labore stet elitr invidunt ea clita ipsum voluptua, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum. Gubergren clita aliquyam consetetur sadipscing, at tempor amet ipsum diam tempor consetetur at sit.</p>
+	                                    <button class="btn btn-sm btn-light">Trả lời</button>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+            </div>
+        </section>
+        
+        <!-- San pham lien quan section-->
+        <section class="py-5 bg-light">
+            <div class="container px-4 px-lg-5 mt-5">
+				<h2 class="fw-bolder mb-4">CÁC SẢN PHẨM KHÁC CỦA SHOP </h2>
+				<div style=" float: right;"><a href="#" class="mr-4">Xem tất cả &gt; &gt;</a></div>
+               
+                <div class="row gx-4 gx-lg-5 justify-content-center carousel-inner">
+				    <div id="recipeCarousel2" class="carousel slide" data-ride="carousel">
+				        <div class="carousel-inner" role="listbox">
+				            <div class="carousel-item row no-gutters active">
+				                <div class="col-3 mb-5 float-left" style="padding-right: 20px">
+			                        <div class="card h-100">
+			                            <!-- Product image-->
+			                            <img class="card-img-top" th:src="@{/resources/images/domixi.png}" alt="..." />
+			                            <!-- Product details-->
+			                            <div class="card-body p-4">
+			                                <div class="text-center">
+			                                    <!-- Product name-->
+			                                    <h5 class="fw-bolder">Gói Spa tắm thú cưng</h5>
+			                                    <!-- Product price-->
+			                                    $40.00 - $80.00
+			                                </div>
+			                            </div>
+			                            <!-- Product actions-->
+			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+			                            </div>
+			                        </div>
+				                </div>
+				                <div class="col-3 mb-5 float-left" style="padding-right: 20px">
+			                        <div class="card h-100">
+			                            <!-- Product image-->
+			                            <img class="card-img-top" th:src="@{/resources/images/domixi.png}" alt="..." />
+			                            <!-- Product details-->
+			                            <div class="card-body p-4">
+			                                <div class="text-center">
+			                                    <!-- Product name-->
+			                                    <h5 class="fw-bolder">Gói Spa vệ sinh tai thú cưng</h5>
+			                                    <!-- Product price-->
+			                                    $40.00 - $80.00
+			                                </div>
+			                            </div>
+			                            <!-- Product actions-->
+			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+			                            </div>
+			                        </div>
+				                </div>
+				                <div class="col-3 mb-5 float-left" style="padding-right: 20px">
+			                        <div class="card h-100">
+			                            <!-- Product image-->
+			                            <img class="card-img-top" th:src="@{/resources/images/domixi.png}" alt="..." />
+			                            <!-- Product details-->
+			                            <div class="card-body p-4">
+			                                <div class="text-center">
+			                                    <!-- Product name-->
+			                                    <h5 class="fw-bolder">Gói Spa cắt và dũa móng chó mèo</h5>
+			                                    <!-- Product price-->
+			                                    $40.00 - $80.00
+			                                </div>
+			                            </div>
+			                            <!-- Product actions-->
+			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+			                            </div>
+			                        </div>
+				                </div>
+				                <div class="col-3 mb-5 float-left" style="padding-right: 20px">
+			                        <div class="card h-100">
+			                            <!-- Product image-->
+			                            <img class="card-img-top" th:src="@{/resources/images/domixi.png}" alt="..." />
+			                            <!-- Product details-->
+			                            <div class="card-body p-4">
+			                                <div class="text-center">
+			                                    <!-- Product name-->
+			                                    <h5 class="fw-bolder">Gói Spa cắt và vệ sinh lông chó mèo</h5>
+			                                    <!-- Product price-->
+			                                    $40.00 - $80.00
+			                                </div>
+			                            </div>
+			                            <!-- Product actions-->
+			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+			                            </div>
+			                        </div>
+				                </div>
+				            </div>
+				            <div class="carousel-item row no-gutters">
+				                <div class="col-3 mb-5 float-left" style="padding-right: 20px">
+			                        <div class="card h-100">
+			                            <!-- Product image-->
+			                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+			                            <!-- Product details-->
+			                            <div class="card-body p-4">
+			                                <div class="text-center">
+			                                    <!-- Product name-->
+			                                    <h5 class="fw-bolder">Gói Spa cắt tỉa &amp; tạo kiểu lông chó mèo</h5>
+			                                    <!-- Product price-->
+			                                    $40.00 - $80.00
+			                                </div>
+			                            </div>
+			                            <!-- Product actions-->
+			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+			                            </div>
+			                        </div>
+				                </div>
+				                <div class="col-3 mb-5 float-left" style="padding-right: 20px">
+			                        <div class="card h-100">
+			                            <!-- Product image-->
+			                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+			                            <!-- Product details-->
+			                            <div class="card-body p-4">
+			                                <div class="text-center">
+			                                    <!-- Product name-->
+			                                    <h5 class="fw-bolder">Gói Spa nhuộm lông cao cấp cho chó mèo</h5>
+			                                    <!-- Product price-->
+			                                    $40.00 - $80.00
+			                                </div>
+			                            </div>
+			                            <!-- Product actions-->
+			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+			                            </div>
+			                        </div>
+				                </div>
+				                <div class="col-3 mb-5 float-left" style="padding-right: 20px">
+			                        <div class="card h-100">
+			                            <!-- Product image-->
+			                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+			                            <!-- Product details-->
+			                            <div class="card-body p-4">
+			                                <div class="text-center">
+			                                    <!-- Product name-->
+			                                    <h5 class="fw-bolder">Fancy Product</h5>
+			                                    <!-- Product price-->
+			                                    $40.00 - $80.00
+			                                </div>
+			                            </div>
+			                            <!-- Product actions-->
+			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+			                            </div>
+			                        </div>
+				                </div>
+				                <div class="col-3 mb-5 float-left" style="padding-right: 20px">
+			                        <div class="card h-100">
+			                            <!-- Product image-->
+			                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+			                            <!-- Product details-->
+			                            <div class="card-body p-4">
+			                                <div class="text-center">
+			                                    <!-- Product name-->
+			                                    <h5 class="fw-bolder">Fancy Product</h5>
+			                                    <!-- Product price-->
+			                                    $40.00 - $80.00
+			                                </div>
+			                            </div>
+			                            <!-- Product actions-->
+			                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+			                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+			                            </div>
+			                        </div>
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+			        <a class="carousel-control-prev" href="#recipeCarousel2" role="button" data-slide="prev">
+			            <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: #dc3545; border-radius: 50%;"></span>
+			            <span class="sr-only">Previous</span>
+			        </a>
+			        <a class="carousel-control-next" href="#recipeCarousel2" role="button" data-slide="next">
+			            <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: #dc3545; border-radius: 50%;"></span>
+			            <span class="sr-only">Next</span>
+			        </a>
+                </div>
+            </div>
+        </section>
+
+	<!-- Footer Start -->
+	<div th:replace="client/fragments.html :: footer"></div>
+	<!-- Footer End -->
+
+
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+</body>
+</html>

@@ -2,7 +2,7 @@
     "use strict";
     
     // Dropdown on mouse hover
-    $(document).ready(function () {
+/*    $(document).ready(function () {
         function toggleNavbarMethod() {
             if ($(window).width() > 992) {
                 $('.navbar .dropdown').on('mouseover', function () {
@@ -16,7 +16,7 @@
         }
         toggleNavbarMethod();
         $(window).resize(toggleNavbarMethod);
-    });
+    });*/
     
     
     // Back to top button
@@ -65,5 +65,17 @@
         }
     });
     
+    // show product detail image
+    $(".owl-carousel").owlCarousel({
+   autoplay: true,
+    loop: true,
+    infinite:true,
+    nav: false,
+    rtl: true,
+    dots:false,
+    items: 4,
+    autoplayTimeout:4000,
+	autoplayHoverPause:true,
+    });
 })(jQuery);
 

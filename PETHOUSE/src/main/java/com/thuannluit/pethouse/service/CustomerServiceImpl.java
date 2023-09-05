@@ -15,9 +15,10 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
+import org.springframework.util.CollectionUtils;
 import com.thuannluit.pethouse.dao.UserDao;
 import com.thuannluit.pethouse.dao.Users_RolesDao;
+import com.thuannluit.pethouse.dto.Login;
 import com.thuannluit.pethouse.entity.Users;
 import com.thuannluit.pethouse.entity.UsersRoles;
 import com.thuannluit.pethouse.util.SystemConstant;
@@ -47,9 +48,8 @@ public class CustomerServiceImpl implements CustomerService {
 		logger.info("CustomerServiceImpl.registerCustomer: " + customer.toString());
 	}
 
-	public void encodePassword(Users customer) {
-		String encodedPassword = passwordEncoder.encode(customer.getPassword());
-		customer.setPassword(encodedPassword);
+	public String encodePassword(String password) {
+		return passwordEncoder.encode(password);
 
 	}
 
@@ -103,7 +103,7 @@ public class CustomerServiceImpl implements CustomerService {
 		String username = email.substring(0, index);
 		customer.setUsername(username);
 		customer.setEmail(email);
-		encodePassword(customer);
+		customer.setPassword(encodePassword(customer.getPassword()));
 
 		customer.setCreatedAt(new Date());
 		customer.setCreatedBy("Client");
@@ -121,10 +121,32 @@ public class CustomerServiceImpl implements CustomerService {
 		UsersRoles userRole = new UsersRoles();
 		int roleId = 1;
 
-		List<Users> user = userDao.findUserByUsernameAndByStatus(customer.getUsername(),SystemConstant.INACTIVE_ACCOUNT);
+		List<Users> user = userDao.findUserByUsernameAndByStatus(customer.getUsername(),
+				SystemConstant.INACTIVE_ACCOUNT);
 		userRole.setUserId(user.get(0).getUserId());
 		userRole.setRoleId(roleId);
 		userRole.setEnabled(true);
 		return userRole;
+	}
+
+	public List<Users> findCustomerByUsernameAndPassword(Login login) {
+		logger.info("CustomerServiceImpl.findCustomerByUsernameAndPassword: " + login.toString());
+		List<Users> listUser = userDao.findUserByUsernameAndByStatus(login.getUsername(),
+				SystemConstant.ACTIVE_ACCOUNT);
+		if (CollectionUtils.isEmpty(listUser)) {
+			return null;
+		} else {
+			boolean checkpw = userPasswordCheck(login.getPassword(), listUser.get(0));
+			if (checkpw) {
+				return listUser;
+			} else {
+				return null;
+			}
+		}
+	}
+
+	public boolean userPasswordCheck(String password, Users user) {
+		String encodedPassword = user.getPassword();
+		return passwordEncoder.matches(password, encodedPassword);
 	}
 }

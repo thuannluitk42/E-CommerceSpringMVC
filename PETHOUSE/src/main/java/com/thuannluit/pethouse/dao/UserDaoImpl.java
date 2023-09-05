@@ -18,11 +18,12 @@ import org.springframework.util.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.thuannluit.pethouse.dto.Login;
 import com.thuannluit.pethouse.entity.Users;
 
 @Repository
 @Transactional
-public class UserDaoImpl implements UserDao{
+public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 	private static final Logger logger = LoggerFactory.getLogger(UserDaoImpl.class);
@@ -70,6 +71,29 @@ public class UserDaoImpl implements UserDao{
 		} catch (NoResultException e) {
 			return null;
 		}
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Users> findUserByUsernameAndByPassswordAndByStatus(Login login, boolean activeAccount) {
+		logger.info("UserDaoImpl.findUserByUsernameAndByPassswordAndByStatus: " );
+		
+		System.out.println("UserDaoImpl.findUserByUsernameAndByPassswordAndByStatus()"+ login.toString());
+		
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		CriteriaQuery<Users> cq = cb.createQuery(Users.class);
+		Root<Users> root = cq.from(Users.class);
+		cq.select(root);
+
+		if (StringUtils.hasText(login.getUsername()) && StringUtils.hasText(login.getPassword())) {
+
+			Predicate p = cb.equal(root.get("username").as(String.class), login.getUsername().trim());
+			p = cb.and(p, cb.equal(root.get("password").as(String.class), login.getPassword().trim()));
+			p = cb.and(p, cb.equal(root.get("enabled"), activeAccount));
+			cq = cq.where(p);
+		}
+		Query query = session.createQuery(cq);
+		return query.getResultList();
 	}
 
 }

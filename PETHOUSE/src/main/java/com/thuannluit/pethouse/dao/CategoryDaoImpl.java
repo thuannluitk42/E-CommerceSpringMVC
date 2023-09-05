@@ -21,6 +21,11 @@ public class CategoryDaoImpl implements CategoryDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@Autowired
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
 	@SuppressWarnings("unchecked")
 	public List<Categories> getCategories() {
 		Session session = sessionFactory.getCurrentSession();
@@ -28,11 +33,6 @@ public class CategoryDaoImpl implements CategoryDao {
 		CriteriaQuery<Categories> cq = cb.createQuery(Categories.class);
 		Root<Categories> root = cq.from(Categories.class);
 		cq.select(root);
-//		
-//		if (!username.isempty()) {
-//			Predicate p = cb.equal(root.get("username").as(String.class), username.trim());
-//				cq = cq.where(p);	
-//		}
 		Query query = session.createQuery(cq);
 		return query.getResultList();
 	}

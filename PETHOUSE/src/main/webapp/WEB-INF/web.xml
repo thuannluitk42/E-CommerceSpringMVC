@@ -9,16 +9,12 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-
-	<context-param>
+	<!--	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>
+	<param-value>
 			/WEB-INF/web_security.xml
 		</param-value>
-	</context-param>
+	</context-param>-->
 
 	<servlet>
 		<servlet-name>spring-config</servlet-name>
@@ -36,15 +32,15 @@
 	</servlet-mapping>
 
 	<!-- Declare Spring Security Filter -->
-	<filter>
+	<!--	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 
 	<filter-mapping>
-		<filter-name>springSecurityFilterChain</filter-name>
-		<url-pattern>/*</url-pattern>
+	<filter-name>springSecurityFilterChain</filter-name>
+	<url-pattern>/*</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
-		<dispatcher>ERROR</dispatcher>
-	</filter-mapping>
+	<dispatcher>ERROR</dispatcher>
+	</filter-mapping>-->
 </web-app>
