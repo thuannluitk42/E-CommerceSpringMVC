@@ -106,6 +106,13 @@ public class AccountController {
 		}
 		return ajaxResponse;
 	}
+	
+	@RequestMapping(path = { "/admin/delete_user" }, method = RequestMethod.POST)
+	public String deleteUser(Model model, @RequestParam("user_id") Integer user_id) {
+		boolean result =  customerService.processDeleteUserById(user_id);
+		model.addAttribute("result_delete_user", result);
+		return "admin/manage_user";
+	}
 
 	@RequestMapping(path = { "/login-process" }, method = RequestMethod.POST)
 	public String processLogin(@ModelAttribute Login login, Model model, HttpSession session,

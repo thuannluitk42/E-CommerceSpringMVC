@@ -27,4 +27,6 @@ public interface CustomerService {
 	List<Users> getInfoUserById(Integer user_id);
 
 	Users updateInfoUser(Users user);
+
+	boolean processDeleteUserById(Integer user_id);
 }

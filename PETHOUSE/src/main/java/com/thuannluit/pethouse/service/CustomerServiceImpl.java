@@ -211,4 +211,8 @@ public class CustomerServiceImpl implements CustomerService {
 		return userDao.updateInfoCustomer(user);
 	}
 
+	public boolean processDeleteUserById(Integer user_id) {
+		return userDao.disableUser(user_id);
+	}
+
 }

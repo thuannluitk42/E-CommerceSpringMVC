@@ -27,6 +27,8 @@ public interface UserDao {
 
 	Users updateInfoCustomer(Users user);
 
+	boolean disableUser(Integer user_id);
+
 }
 
 //public interface UserDao extends CrudRepository<Users, Long> {

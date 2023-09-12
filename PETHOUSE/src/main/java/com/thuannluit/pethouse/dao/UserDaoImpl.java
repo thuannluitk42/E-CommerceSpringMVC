@@ -2,6 +2,7 @@ package com.thuannluit.pethouse.dao;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import javax.persistence.NoResultException;
@@ -28,6 +29,7 @@ import com.thuannluit.pethouse.dto.Login;
 import com.thuannluit.pethouse.dto.UserInfo;
 import com.thuannluit.pethouse.entity.Roles;
 import com.thuannluit.pethouse.entity.Users;
+import com.thuannluit.pethouse.util.SystemConstant;
 import com.thuannluit.pethouse.util.Utility;
 
 @Repository
@@ -100,8 +102,13 @@ public class UserDaoImpl implements UserDao {
 			p = cb.and(p, cb.equal(root.get("enabled"), activeAccount));
 			cq = cq.where(p);
 		}
-		Query query = session.createQuery(cq);
-		return query.getResultList();
+		try {
+			Query query = session.createQuery(cq);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -113,8 +120,12 @@ public class UserDaoImpl implements UserDao {
 		CriteriaQuery<Users> cq = cb.createQuery(Users.class);
 		Root<Users> root = cq.from(Users.class);
 		cq.select(root);
-		Query query = session.createQuery(cq);
-		return query.getResultList();
+		try {
+			Query query = session.createQuery(cq);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -131,18 +142,26 @@ public class UserDaoImpl implements UserDao {
 		CriteriaQuery<Users> cq = cb.createQuery(Users.class);
 		Root<Users> root = cq.from(Users.class);
 		cq.select(root);
-		Query query = session.createQuery(cq);
 
-		if (query.getResultList().size() < startItem) {
-			listUser = Collections.emptyList();
-		} else {
-			int toIndex = Math.min(startItem + pageSize, query.getResultList().size());
-			listUser = query.getResultList().subList(startItem, toIndex);
-			listUserInfo = cvtUserInfoDto(listUser);
+		Predicate p = cb.equal(root.get("enabled"), SystemConstant.ACTIVE_ACCOUNT);
+		cq = cq.where(p);
+
+		try {
+			Query query = session.createQuery(cq);
+
+			if (query.getResultList().size() < startItem) {
+				listUser = Collections.emptyList();
+			} else {
+				int toIndex = Math.min(startItem + pageSize, query.getResultList().size());
+				listUser = query.getResultList().subList(startItem, toIndex);
+				listUserInfo = cvtUserInfoDto(listUser);
+			}
+			PageImpl<UserInfo> pageOfUserInfo = new PageImpl<UserInfo>(listUserInfo,
+					PageRequest.of(currentPage, pageSize), query.getResultList().size());
+			return pageOfUserInfo;
+		} catch (NoResultException e) {
+			return null;
 		}
-		PageImpl<UserInfo> pageOfUserInfo = new PageImpl<UserInfo>(listUserInfo, PageRequest.of(currentPage, pageSize),
-				query.getResultList().size());
-		return pageOfUserInfo;
 	}
 
 	private List<UserInfo> cvtUserInfoDto(List<Users> listUser) {
@@ -184,29 +203,62 @@ public class UserDaoImpl implements UserDao {
 			Predicate p = cb.equal(root.get("userId"), user_id);
 			cq = cq.where(p);
 		}
-		Query query = session.createQuery(cq);
-		return query.getResultList();
+
+		try {
+			Query query = session.createQuery(cq);
+			return query.getResultList();
+		} catch (NoResultException e) {
+			return null;
+		}
 	}
 
 	public Users updateInfoCustomer(Users userUpdate) {
 		logger.info("UserDaoImpl.updateInfoCustomer");
-		
+
 		Users u = getAccountById(userUpdate.getUserId()).get(0);
-		
+
 		Session currentSession = sessionFactory.getCurrentSession();
-		
+
 		u.setFullName(userUpdate.getFullName());
 		u.setBirthday(userUpdate.getBirthday());
 		u.setGender(userUpdate.getGender());
 		u.setEmail(userUpdate.getEmail());
 		u.setPhoneNumber(userUpdate.getPhoneNumber());
 		u.setAddress(userUpdate.getAddress());
-		
-		currentSession.saveOrUpdate(u);
-		
-		return u;
+
+		u.setUpdatedAt(new Date());
+		u.setUpdatedBy("ADMIN");
+
+		try {
+			currentSession.saveOrUpdate(u);
+			return u;
+		} catch (NoResultException e) {
+			return null;
+		}
+
 	}
-	
+
+	public boolean disableUser(Integer user_id) {
+		logger.info("UserDaoImpl.disableUser");
+
+		Users u = getAccountById(user_id).get(0);
+
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		u.setEnabled(false);
+
+		u.setUpdatedAt(new Date());
+		u.setUpdatedBy("ADMIN");
+
+		try {
+			currentSession.saveOrUpdate(u);
+			return true;
+		} catch (NoResultException e) {
+			return false;
+		}
+
+	}
+
 //	public boolean update(YourClass yourObject) {
 //	    Transaction transaction = null;
 //	    boolean result = false;
