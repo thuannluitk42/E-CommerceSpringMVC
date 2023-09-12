@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="client/fragments.html :: html_head" />
+
+<body>
+
+	<!-- Topbar Start -->
+	<div th:replace="client/fragments.html :: topbar"></div>
+	<!-- Topbar End -->
+	<!-- Navbar Start -->
+	<div th:replace="client/fragments.html :: navbar"></div>
+	<!-- Navbar End -->
+
+    <!-- Contact Start -->
+    <div class="container-fluid pt-5">
+        <div class="d-flex flex-column text-center mb-5 pt-5">
+            <h1 class="display-4 m-0 text-primary">Đặt Lịch Nhanh</span></h1>
+            <h5>Các trường được đánh dấu <span style="color: red;">*</span> là bắt buộc</h5>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 mb-5">
+                <div class="contact-form">
+                    <div id="success"></div>
+                    <h5>YÊU CẦU DỊCH VỤ <span style="color: red;">*</span></h5>
+                    <p>Vui lòng chọn 1 dịch vụ bạn đang cần để PetHouse có thể chuẩn bị, và phục vụ các bé một cách chu đáo nhất nhé!</p>
+                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                            <div class="form-group">
+                                <select class="custom-select border-1 px-4" style="height: 47px;">
+                                    <option selected>Chọn 1 dịch vụ cho thú cưng của bạn</option>
+                                    <option value="1">Tắm khô</option>
+                                    <option value="2">Tạo kiểu</option>
+                                    <option value="3">Chăm sóc cao cấp</option>
+                                    <option value="4">Phòng tắm y tế</option>
+                                    <option value="5">Hoạt động vui chơi</option>
+                                    <option value="6">Thú y</option>
+                                    <option value="7">Vắc xin</option>
+                                    <option value="8">Đào tạo</option>
+                                    <option value="9">Lưu trú</option>
+                                </select>
+                            </div>
+                        <div class="control-group" >
+                            <input type="text" class="form-control p-4"  placeholder="Họ và tên" th:if="${#session.getAttribute('customerModel')} != null" th:value="${session.customerModel['username']}" />
+                            <input type="text" class="form-control p-4"  placeholder="Họ và tên" th:if="${#session.getAttribute('customerModel')} == null" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group" >
+                            <input type="text" class="form-control p-4"  placeholder="Số điện thoại" th:if="${#session.getAttribute('customerModel')} != null" th:value="${session.customerModel['phoneNumber']}" />
+                            <input type="text" class="form-control p-4"  placeholder="Số điện thoại" th:if="${#session.getAttribute('customerModel')} == null" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="control-group" >
+                            <input type="email" class="form-control p-4"  placeholder="Email" th:if="${#session.getAttribute('customerModel')} != null" th:value="${session.customerModel['email']}" />
+                            <input type="email" class="form-control p-4"  placeholder="Email" th:if="${#session.getAttribute('customerModel')} == null" />
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div class="form-group">
+                            <div class="date" id="date" data-target-input="nearest">
+                                <input type="text" class="form-control border-1 p-4 datetimepicker-input" placeholder="Thời gian" data-target="#date" data-toggle="datetimepicker"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <textarea class="form-control p-4" rows="6" id="message" placeholder="Nhập một vài môt tả về tình trạng của các bé để các chuyên viên của chúng tôi có thể hỗ trợ bạn tốt nhất..." ></textarea>
+                            <p class="help-block text-danger"></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary py-3 px-5" type="submit" id="sendMessageButton">GỬI YÊU CẦU</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+    
+    <!-- Footer Start -->
+	<div th:replace="client/fragments.html :: footer"></div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+</body>
+
+</html>

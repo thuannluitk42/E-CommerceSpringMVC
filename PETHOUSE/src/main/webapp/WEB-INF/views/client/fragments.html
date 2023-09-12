@@ -18,6 +18,30 @@
     <link th:href="@{/resources/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet"/>
     <!-- Customized Bootstrap Stylesheet -->
      <link th:href="@{/resources/css/style.css}" rel="stylesheet"/>
+     <style type="text/css">
+		#dropdown-products {
+		  display: none;
+		}
+		
+		#menu-products:hover #dropdown-products {
+		  display: block;
+		  position: absolute;
+		  top: 100%;
+		  z-index: 1000;
+		  float: left;
+		  min-width: 10rem;
+		  padding: 0.5rem 0;
+		  margin: 0.125rem 0 0;
+		  font-size: 1rem;
+		  color: #777777;
+		  text-align: left;
+		  list-style: none;
+		  background-color: #fff;
+		  background-clip: padding-box;
+		  border: 1px solid rgba(0, 0, 0, 0.15);
+		  border-radius: 0.25rem;
+		}
+     </style>
 </head>
 <body>
     <!-- Topbar Start -->
@@ -52,7 +76,7 @@
     <!-- Navbar Start -->
     <div th:fragment="navbar" class="container-fluid p-0">
         <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 py-lg-0 px-lg-5">
-            <a href="" class="navbar-brand d-block d-lg-none">
+            <a th:href="@{/index}" class="navbar-brand d-block d-lg-none">
                 <h1 class="m-0 display-5 text-capitalize font-italic text-white"><span class="text-primary">Pet</span>House</h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -63,26 +87,29 @@
                     <a th:href="@{/index}" class="nav-item nav-link" th:classappend="${isIndex} ? active : ''">Trang chủ</a>
                     <a th:href="@{/about-me}" class="nav-item nav-link" th:classappend="${isAbout} ? active : ''">Về chúng tôi</a>
                     <a th:href="@{/service}" class="nav-item nav-link" th:classappend="${isService} ? active : ''">Dịch vụ</a>
-                    <a th:href="@{/book}" class="nav-item nav-link" th:classappend="${isBook} ? active : ''">Đặt chỗ</a>
-                    <div class="nav-item dropdown">
-                        <a th:href="@{/shop}" class="nav-link dropdown-toggle" data-hover="dropdown" aria-haspopup="true" aria-expanded="false">Cửa hàng</a>
-	                        <div class="dropdown-menu rounded-0 m-0">
-	                            <a th:href="@{/shop(id=${category.categoryId})}" class="dropdown-item" th:each="category: ${listCategory}" th:text="${category.categoryName}"></a>
-	                        </div>
+                    <a th:href="@{/booking}" class="nav-item nav-link" th:classappend="${isBook} ? active : ''">Đặt chỗ</a>
+
+                    <div class="nav-item" id="menu-products">
+                        <a th:href="@{/shop}" class="nav-link">Cửa hàng</a>
+	                        <ul class="rounded-0 m-0" id="dropdown-products">
+	                            <li><a th:href="@{/shop(id=${category.categoryId})}" class="dropdown-item" th:each="category: ${listCategory}" th:text="${category.categoryName}"></a></li>
+	                        </ul>
                     </div>
+
                     <a th:href="@{/contact}" class="nav-item nav-link" th:classappend="${isContact} ? active : ''">Liên hệ</a>
-					<!-- IF CUSTOMER IS ANONYMOUS -->
-						<a th:if="${#session.getAttribute('customerModel')} == null" th:href="@{/login}" class="nav-item nav-link" th:classappend="${isLoginPage} ? active : ''">Đăng nhập</a>
-	                    <a th:if="${#session.getAttribute('customerModel')} == null" th:href="@{/register}" class="nav-item nav-link" th:classappend="${isRegister} ? active : ''">Đăng ký</a>
-					<!-- ELSE -->
-	                    <div class="nav-item dropdown" th:if="${#session.getAttribute('customerModel')} != null">
-	                        <a th:href="@{/#}" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text=" 'Hi,' + ${session.customerModel['username']}"></a>
-		                        <div class="dropdown-menu rounded-0 m-0">
-		                            <a th:href="@{/#}" class="dropdown-item"> Tài khoản của tôi</a>
-		                            <a th:href="@{/#}" class="dropdown-item"> Đơn mua</a>
-		                            <a th:href="@{/logout}" class="dropdown-item"> Đăng xuất</a>
-		                        </div>
-	                    </div>
+			<!-- IF CUSTOMER IS ANONYMOUS -->
+					<a th:if="${#session.getAttribute('customerModel')} == null" th:href="@{/login}" class="nav-item nav-link" th:classappend="${isLoginPage} ? active : ''">Đăng nhập</a>
+                    <a th:if="${#session.getAttribute('customerModel')} == null" th:href="@{/register}" class="nav-item nav-link" th:classappend="${isRegister} ? active : ''">Đăng ký</a>
+			<!-- ELSE -->
+                   <div class="nav-item dropdown" th:if="${#session.getAttribute('customerModel')} != null">
+                       <a th:href="@{/#}" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text=" 'Hi,' + ${session.customerModel['username']}"></a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                            <a th:href="@{/#}" class="dropdown-item"> Tài khoản của tôi</a>
+                            <a th:href="@{/#}" class="dropdown-item"> Đơn mua</a>
+                            <a th:href="@{/logout}" class="dropdown-item"> Đăng xuất</a>
+                        </div>
+                   </div>
+                   <a th:href="@{/admin/manage}" class="nav-item nav-link" th:classappend="${isManager} ? active : ''">Quản lý</a>
                 </div>
                 <form class="d-flex">
                         <button class="btn btn-outline-primary " type="submit">
@@ -109,8 +136,8 @@
                             <h3 class="text-white mb-3 d-none d-sm-block">Chăm sóc VIP</h3>
                             <h1 class="display-3 text-white mb-3">Giữ pet của bạn vui vẻ</h1>
                             <h5 class="text-white mb-3 d-none d-sm-block">Đem lại những trải nghiệm tốt nhất đến pet của bạn</h5>
-                            <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Đặt chỗ ngay</a>
-                            <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Xem thêm</a>
+                            <a th:href="@{/booking}" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Đặt chỗ ngay</a>
+                            <a th:href="@{/service}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Xem thêm</a>
                         </div>
                     </div>
                 </div>
@@ -121,8 +148,8 @@
                             <h3 class="text-white mb-3 d-none d-sm-block">Chăm sóc VIP</h3>
                             <h1 class="display-3 text-white mb-3">Giữ pet luôn thơm tho</h1>
                             <h5 class="text-white mb-3 d-none d-sm-block">Đem lại những trải nghiệm tốt nhất đến pet của bạn</h5>
-                            <a href="" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Đặt chỗ ngay</a>
-                            <a href="" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Xem thêm</a>
+                            <a th:href="@{/booking}" class="btn btn-lg btn-primary mt-3 mt-md-4 px-4">Đặt chỗ ngay</a>
+                            <a th:href="@{/service}" class="btn btn-lg btn-secondary mt-3 mt-md-4 px-4">Xem thêm</a>
                         </div>
                     </div>
                 </div>

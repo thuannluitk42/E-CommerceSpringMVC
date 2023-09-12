@@ -97,11 +97,30 @@
 		    <artifactId>slf4j-simple</artifactId>
 		    <version>${slf4j.version}</version>
 		</dependency>
-<dependency>
-    <groupId>org.apache.tomcat</groupId>
-    <artifactId>tomcat-dbcp</artifactId>
-    <version>7.0.55</version>
-</dependency>
+		<dependency>
+		    <groupId>org.apache.tomcat</groupId>
+		    <artifactId>tomcat-dbcp</artifactId>
+		    <version>7.0.55</version>
+		</dependency>
+		<!-- spring-data-commons -->
+		<dependency>
+		    <groupId>org.springframework.data</groupId>
+		    <artifactId>spring-data-commons</artifactId>
+		    <version>3.1.2</version>
+		</dependency>
+		<!-- Need this for json to/from object -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.15.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.15.2</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

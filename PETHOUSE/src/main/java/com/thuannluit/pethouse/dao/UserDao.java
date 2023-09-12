@@ -1,8 +1,11 @@
 package com.thuannluit.pethouse.dao;
 
 import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.thuannluit.pethouse.dto.Login;
+import com.thuannluit.pethouse.dto.UserInfo;
 import com.thuannluit.pethouse.entity.Users;
 
 
@@ -14,7 +17,15 @@ public interface UserDao {
 	
 	Users findUserByVerificationCode(String code);
 	
-	List<Users> findUserByUsernameAndByPassswordAndByStatus(Login login ,boolean activeAccount);
+	List<Users> findUserByUsernameAndByPassswordAndByEnabled(Login login ,boolean activeAccount);
+
+	List<Users> getListAccount();
+
+	Page<UserInfo> pagingOfUser(Pageable pageable);
+
+	List<Users> getAccountById(Integer user_id);
+
+	Users updateInfoCustomer(Users user);
 
 }
 

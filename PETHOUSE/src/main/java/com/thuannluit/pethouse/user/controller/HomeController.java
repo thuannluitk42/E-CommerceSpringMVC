@@ -32,6 +32,15 @@ public class HomeController {
 		model.addAttribute("isIndex", true);
 		return "client/index";
 	}
+	
+	@RequestMapping(path = { "/admin/manage" }, method = RequestMethod.GET)
+	public String showAdminPage(Model model, HttpServletRequest request, HttpSession session) {
+		if (request.getSession().getAttribute("customerModel") == null) {
+			session.setAttribute("customerModel", null);
+		}
+		model.addAttribute("isIndex", true);
+		return "admin/index";
+	}
 
 	@RequestMapping(path = "/404", method = { RequestMethod.GET })
 	public String show404Page(Model model) {

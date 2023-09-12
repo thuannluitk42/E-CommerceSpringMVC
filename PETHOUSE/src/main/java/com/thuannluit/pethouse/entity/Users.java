@@ -16,6 +16,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.web.JsonPath;
+
 @Entity
 @Table(name = "users")
 public class Users extends BasedEntity implements Serializable {
@@ -147,14 +149,6 @@ public class Users extends BasedEntity implements Serializable {
 
 	public void setStatus(boolean status) {
 		this.status = status;
-	}
-
-	@Override
-	public String toString() {
-		return "Users [userId=" + userId + ", username=" + username + ", password=" + password + ", fullName="
-				+ fullName + ", birthday=" + birthday + ", address=" + address + ", email=" + email + ", phoneNumber="
-				+ phoneNumber + ", gender=" + gender + ", verificationCode=" + verificationCode + ", status=" + status
-				+ ", roles=" + roles + "]";
 	}
 
 }
