@@ -39,14 +39,14 @@ public class UserDaoImpl implements UserDao {
 	Utility utility = new Utility();
 
 	public void saveCustomer(Users customer) {
-		logger.info("UserDaoImpl.UserDaoImpl" + customer.toString());
+		logger.info("UserDaoImpl.UserDaoImpl");
 		Session currentSession = sessionFactory.getCurrentSession();
 		currentSession.saveOrUpdate(customer);
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Users> findUserByUsernameAndByStatus(String username, boolean statusAccount) {
-		logger.info("UserDaoImpl.getUsers: " + username);
+		logger.info("UserDaoImpl.getUsers");
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Users> cq = cb.createQuery(Users.class);
@@ -64,7 +64,7 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public Users findUserByVerificationCode(String code) {
-		logger.info("UserDaoImpl.findByVerificationCode: " + code);
+		logger.info("UserDaoImpl.findByVerificationCode");
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Users> cq = cb.createQuery(Users.class);
@@ -85,7 +85,7 @@ public class UserDaoImpl implements UserDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Users> findUserByUsernameAndByPassswordAndByEnabled(Login login, boolean activeAccount) {
-		logger.info("UserDaoImpl.findUserByUsernameAndByPassswordAndByStatus: ");
+		logger.info("UserDaoImpl.findUserByUsernameAndByPassswordAndByStatus");
 
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -171,7 +171,7 @@ public class UserDaoImpl implements UserDao {
 
 	@SuppressWarnings("unchecked")
 	public List<Users> getAccountById(Integer user_id) {
-		logger.info("UserDaoImpl.getAccountById: " + user_id);
+		logger.info("UserDaoImpl.getAccountById");
 
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
@@ -188,12 +188,44 @@ public class UserDaoImpl implements UserDao {
 		return query.getResultList();
 	}
 
-	public Users updateInfoCustomer(Users user) {
-		logger.info("UserDaoImpl.updateInfoCustomer" + user.toString());
+	public Users updateInfoCustomer(Users userUpdate) {
+		logger.info("UserDaoImpl.updateInfoCustomer");
+		
+		Users u = getAccountById(userUpdate.getUserId()).get(0);
+		
 		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.saveOrUpdate(user);
-		Users u = getAccountById(user.getUserId()).get(0);
+		
+		u.setFullName(userUpdate.getFullName());
+		u.setBirthday(userUpdate.getBirthday());
+		u.setGender(userUpdate.getGender());
+		u.setEmail(userUpdate.getEmail());
+		u.setPhoneNumber(userUpdate.getPhoneNumber());
+		u.setAddress(userUpdate.getAddress());
+		
+		currentSession.saveOrUpdate(u);
+		
 		return u;
 	}
+	
+//	public boolean update(YourClass yourObject) {
+//	    Transaction transaction = null;
+//	    boolean result = false;
+//	    try {
+//	        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//	        Session session = sessionFactory.getCurrentSession();
+//	        transaction = session.beginTransaction();
+//	        session.update(yourObject);
+//	        transaction.commit();
+//
+//	        result = true;
+//
+//	    } catch (Exception ex) {
+//	        ex.printStackTrace();
+//	        if (transaction != null) {
+//	            transaction.rollback();
+//	        }
+//	    }
+//	    return result;
+//	}
 
 }

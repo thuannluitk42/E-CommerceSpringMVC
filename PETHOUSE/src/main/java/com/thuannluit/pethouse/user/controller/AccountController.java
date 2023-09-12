@@ -23,6 +23,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.thuannluit.pethouse.dto.Login;
 import com.thuannluit.pethouse.dto.UserInfo;
 import com.thuannluit.pethouse.entity.Categories;
@@ -91,9 +94,17 @@ public class AccountController {
 	@RequestMapping(path = {"/admin/updateInfoUser" }, 
 					method = RequestMethod.POST, 
 					produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody Users updateInfoUserUseAjax(@RequestBody Users user, HttpServletRequest request) {
-		ObjectMapper 
-		return customerService.updateInfoUser(user);
+	public @ResponseBody String updateInfoUserUseAjax(@RequestBody Users user, HttpServletRequest request) {
+		
+		Users u = customerService.updateInfoUser(user);
+		ObjectMapper mapper = new ObjectMapper();
+		String ajaxResponse = "";
+		try {
+			ajaxResponse = mapper.writeValueAsString(u);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return ajaxResponse;
 	}
 
 	@RequestMapping(path = { "/login-process" }, method = RequestMethod.POST)

@@ -129,8 +129,7 @@ public class CustomerServiceImpl implements CustomerService {
 		UsersRoles userRole = new UsersRoles();
 		int roleId = 1;
 
-		List<Users> user = userDao.findUserByUsernameAndByStatus(customer.getUsername(),
-				SystemConstant.INACTIVE_ACCOUNT);
+		List<Users> user = userDao.findUserByUsernameAndByStatus(customer.getUsername(), SystemConstant.INACTIVE_ACCOUNT);
 		userRole.setUserId(user.get(0).getUserId());
 		userRole.setRoleId(roleId);
 		userRole.setEnabled(true);
@@ -138,7 +137,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	public List<Users> findCustomerByUsernameAndPassword(Login login) {
-		logger.info("CustomerServiceImpl.findCustomerByUsernameAndPassword: " + login.toString());
+		logger.info("CustomerServiceImpl.findCustomerByUsernameAndPassword");
 		List<Users> listUser = userDao.findUserByUsernameAndByStatus(login.getUsername(),
 				SystemConstant.ACTIVE_ACCOUNT);
 		if (CollectionUtils.isEmpty(listUser)) {
@@ -198,7 +197,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	public List<Users> getInfoUserById(Integer user_id) {
-		logger.info("CustomerServiceImpl.getInfoUserById: "+ user_id);
+		logger.info("CustomerServiceImpl.getInfoUserById");
 		List<Users> listUser = userDao.getAccountById(user_id);
 		if (CollectionUtils.isEmpty(listUser)) {
 			return null;
@@ -208,7 +207,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	public Users updateInfoUser(Users user) {
-		logger.info("CustomerServiceImpl.updateInfoUser: "+ user.getUserId());
+		logger.info("CustomerServiceImpl.updateInfoUser");
 		return userDao.updateInfoCustomer(user);
 	}
 

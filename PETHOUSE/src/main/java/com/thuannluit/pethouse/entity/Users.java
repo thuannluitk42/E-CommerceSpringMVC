@@ -16,7 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import org.springframework.data.web.JsonPath;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "users")
@@ -49,10 +49,10 @@ public class Users extends BasedEntity implements Serializable {
 	protected boolean status;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinTable(name = "users_roles", joinColumns = {
-			@JoinColumn(name = "userId", referencedColumnName = "userId") }, inverseJoinColumns = {
-					@JoinColumn(name = "roleId", referencedColumnName = "roleId") })
-
+	@JoinTable(name = "users_roles", 
+			   joinColumns = { @JoinColumn(name = "userId", referencedColumnName = "userId") }, 
+			   inverseJoinColumns = {@JoinColumn(name = "roleId", referencedColumnName = "roleId") })
+	@JsonIgnore
 	private Set<Roles> roles = new HashSet<Roles>();
 
 	public int getUserId() {
@@ -149,6 +149,14 @@ public class Users extends BasedEntity implements Serializable {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Users [userId=" + userId + ", username=" + username + ", password=" + password + ", fullName="
+				+ fullName + ", birthday=" + birthday + ", address=" + address + ", email=" + email + ", phoneNumber="
+				+ phoneNumber + ", gender=" + gender + ", verificationCode=" + verificationCode + ", status=" + status
+				+ ", roles=" + roles + "]";
 	}
 
 }
