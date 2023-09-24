@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="admin/fragments.html :: html_head" ></head>
+<head th:replace="admin/fragments.html :: html_head" >
+<style type="text/css">
+	.input-group-append {
+	  cursor: pointer;
+	}
+</style>
+</head>
 
     <body>
     
@@ -26,52 +32,60 @@
                         </ol>
                         <div class="card mb-4">
 							<form id = "UpdateInfoUser" th:action="@{/admin/updateInfoUser}" method="post" th:object="${user}">
+
+								   <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 20px;margin-top: 20px;">
+								   		<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+								   </div>
 								  <div class="form-group row">
 								    <h2 style="text-align: center;">Thông tin người dùng</h2>
 								  </div>
-								   <div style="display: flex;justify-content: center;align-items: center;margin-bottom: 20px;">
-								   			<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""> 
-								   </div>
 								  <div class="form-group row mb-2">
 								    <label class="col-sm-4 col-form-label" style="text-align: right;">Họ và tên</label>
 								    <div class="col-sm-4">
 								      <input type="hidden" class="form-control" id="user_id" th:field="*{userId}">
-								      <input type="text" class="form-control" id="fullName" th:field="*{fullName}">
+								      <input type="text" class="form-control" id="fullName" th:field="*{fullName}" placeholder="Nhập họ và tên của bạn...">
 								    </div>
 								  </div>
 								  <div class="form-group row mb-2">
-								     <label class="col-sm-4 col-form-label" style="text-align: right;">Ngày sinh</label>
-								    <div class="col-sm-4">
-								      <input type="text" class="form-control" id="birthday" th:field="*{birthday}">
-								    </div>
+									    <label class="col-sm-4 col-form-label" style="text-align: right;">Ngày sinh</label>
+									    <div class="col-sm-4">
+							                <div class="input-group date">
+							                    <input type="text" class="form-control" id="birthday" autocomplete="off" th:field="*{birthday}" placeholder="mm/dd/yyyy"/>
+							                    <div class="input-group-append">
+							                        <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+							                    </div>
+							                </div>
+									    </div>
 								  </div>
 								  <div class="form-group row mb-2">
 								     <label class="col-sm-4 col-form-label" style="text-align: right;">Giới tính</label>
 								    <div class="col-sm-4">
-										<input class="form-control" id="gender" th:field="*{gender}">
+								        <input type="radio"  th:field="*{gender}" th:value="1"  th:checked="${gender == 1? true: false}"/>Nam
+								        <input type="radio"  th:field="*{gender}" th:value="0" th:checked="${gender == 0? true: false}"/>Nữ
 								    </div>
 								  </div>
 								  <div class="form-group row mb-2">
 								     <label class="col-sm-4 col-form-label" style="text-align: right;">Email</label>
 								    <div class="col-sm-4">
-								      <input type="email" class="form-control" id="email" th:field="*{email}">
+								      <input type="email" class="form-control" id="email" th:field="*{email}" placeholder="Nhập email của bạn...">
 								    </div>
 								  </div>
 								  <div class="form-group row mb-2">
 								     <label class="col-sm-4 col-form-label" style="text-align: right;">Số điện thoại</label>
 								    <div class="col-sm-4">
-								      <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}">
+								      <input type="text" class="form-control" id="phoneNumber" th:field="*{phoneNumber}" placeholder="Nhập sdt của bạn...">
 								    </div>
 								  </div>
 								  <div class="form-group row mb-4">
 								     <label class="col-sm-4 col-form-label" style="text-align: right;">Địa chỉ</label>
 								    <div class="col-sm-4">
-								      <input type="text" class="form-control" id="address" th:field="*{address}">
+								      <input type="text" class="form-control" id="address" th:field="*{address}" placeholder="Nhập địa chỉ của bạn...">
 								    </div>
 								  </div>
 							   		<div class="form-group row mb-5" style="display: flex;justify-content: center;align-items: center;">
-										<button type="button" id = "updateInfoUserButton" class="btn btn-primary col-sm-2" onClick = "updateUserInfoEvent()">Cập nhật</button>
-										<button type="button" id = "resetInfoUserButton" class="btn btn-secondary col-sm-2" style="background: gray;" onClick = "resetUserInfoEvent()">Xóa thông tin</button>
+										<button th:if="${flagMode == 0}" type="button" id = "insertInfoUserButton" class="btn btn-primary col-sm-2" onClick = "insertUserInfoEvent()">Thêm mới</button>						   		
+										<button th:if="${flagMode == 1}" type="button" id = "updateInfoUserButton" class="btn btn-primary col-sm-2" onClick = "updateUserInfoEvent()">Cập nhật</button>
+										<button type="button" id = "resetInfoUserButton" class="btn btn-secondary col-sm-2" style="background: gray;" onClick = "resetUserInfoEvent()">Reset</button>
 							   		</div>
 																	
 							</form>
@@ -82,19 +96,24 @@
 							  <div class="form-group row mb-2">
 							    <label class="col-sm-4 col-form-label" style="text-align: right;">Username</label>
 							    <div class="col-sm-4">
-							      <input type="text" class="form-control" th:value="${user.username}" disabled="disabled">
+							      <input th:if="${flagMode == 0}" id ="username" type="text" class="form-control" placeholder="Nhập email của bạn...">
+							      <input th:if="${flagMode == 1}" type="text" class="form-control" th:value="${user.username}" disabled="disabled">
 							    </div>
 							  </div>
 							  <div class="form-group row mb-2">
 							    <label class="col-sm-4 col-form-label" style="text-align: right;">Mật khẩu</label>
 							    <div class="col-sm-4">
-							      <input type="text" class="form-control" th:value="${user.password}">
+							      <input type="text" class="form-control" id ="password" th:value="${user.password}" placeholder="Nhập mật khẩu của bạn...">
 							    </div>
 							  </div>
 							  <div class="form-group row mb-2">
-							    <label class="col-sm-4 col-form-label" style="text-align: right;">Vai trò</label>
+							    <label class="col-sm-4 col-form-label" style="text-align: right;">Vai trò <span style="color: red;">(*)</span></label>
 							    <div class="col-sm-4">
-							      <input type="text" class="form-control" th:value="${role_user}">
+						            <div class="custom-control custom-radio custom-control-inline" th:each="roleItem : ${role_user}">
+						                <input type="radio" th:id="${roleItem.key}" th:checked="${roleItem.key == roleActual? true: false}" name="UserRoles" class="custom-control-input" th:value="${roleItem.key}">
+						                <label class="custom-control-label" th:text="${roleItem.value}"></label>
+						            </div>
+						            <p><span style="color: red;">(*)</span> Mặc định vai trò là admin</p>
 							    </div>
 							  </div>
 							</form>
@@ -108,25 +127,25 @@
 			    <!-- Footer Start -->
 				<div th:replace="/admin/fragments.html :: footer"></div>
 				<script>
+			    $('.input-group.date').datepicker({
+			        autoclose: true,
+			        todayHighlight: true
+			    });
 				 function resetUserInfoEvent(){
 				   document.getElementById("UpdateInfoUser").reset();
 				 } 
 				 function updateUserInfoEvent(){
-/* 				      var fullName = $('#fullName').val();
-				      var birthday = $('#birthday').val();
-				      var gender = $('#gender').val();
-				      var email = $('#email').val();
-				      var phoneNumber = $('#phoneNumber').val();
-				      var address = $('#address').val(); */
-				      
+					 var genderValue = $("input[type=radio][name=gender]").filter(":checked")[0];
+					 var roleValue = $("input[type=radio][name=UserRoles]").filter(":checked")[0];
 				      var users = {
 				    	"userId" : 		$('#user_id').val(),  
 				    	"fullName" : 	$('#fullName').val(),  
 				    	"birthday" : 	$('#birthday').val(),
-				    	"gender": 		$('#gender').val(),
+				    	"gender": 		genderValue.value,
 				    	"email": 		$('#email').val(),
 				    	"phoneNumber": 	$('#phoneNumber').val(),
 				    	"address": 		$('#address').val(),
+				    	"roleName": 		roleValue.value
 				      }
 				 
 				    $.ajax({
@@ -136,23 +155,46 @@
 				        contentType : "application/json",
 				        dataType : 'json',
 				        success: function(users) {
-				        	
-				        	console.log("SUCCESS: ", users);
-				        	
-/* 				        	document.getElementById("user_id").value = users.userId;
-				        	document.getElementById("fullName").value = users.fullName;
-				        	document.getElementById("birthday").value = users.birthday;
-				        	document.getElementById("gender").value = users.gender;
-				        	document.getElementById("email").value = users.email;
-				        	document.getElementById("phoneNumber").value = users.phoneNumber;
-				        	document.getElementById("address").value = users.address; */
-				        	
+				        	console.log("SUCCESS: ", users);				        	
 				        	alert("Cập nhật thông tin thành công");
-				        	
+				        	location.href = "/PETHOUSE/admin/manage_user"
 				        },
 				        error : function(e) {
 				        	console.log("ERROR: ", e);
 				        	alert("Cập nhật thông tin thất bại");
+				        }
+				    });
+				 } 
+				 
+				 function insertUserInfoEvent(){			
+					 var roleValue = $("input[type=radio][name=UserRoles]").filter(":checked")[0];
+					 var genderValue = $("input[type=radio][name=gender]").filter(":checked")[0];
+
+				      var users = { 
+				    	"fullName" : 	$('#fullName').val(),  
+				    	"birthday" : 	$('#birthday').val(),
+				    	"gender": 		genderValue.value,
+				    	"email": 		$('#email').val(),
+				    	"phoneNumber": 	$('#phoneNumber').val(),
+				    	"address": 		$('#address').val(),
+				    	"username": 	$('#username').val(),
+				    	"password": 	$('#password').val(),
+				    	"roleName": 	roleValue.value
+				      }
+				    $.ajax({
+				        url: "/PETHOUSE/admin/insertNewUser",
+				        data: JSON.stringify(users),
+				        type: "POST",
+				        contentType : "application/json",
+				        dataType : 'json',
+				        success: function(users) {
+				        	console.log("SUCCESS: ", users);				        	
+				        	alert("Thêm người dùng thành công");
+				        	location.href = "/PETHOUSE/admin/manage_user"
+				        },
+				        error : function(e) {
+				        	console.log("ERROR: ", e);
+				        	alert("Thêm người dùng thất bại");
 				        }
 				    });
 				 } 

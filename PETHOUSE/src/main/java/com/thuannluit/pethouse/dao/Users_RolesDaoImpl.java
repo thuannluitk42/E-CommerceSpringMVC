@@ -19,7 +19,7 @@ public class Users_RolesDaoImpl implements Users_RolesDao {
 	private static final Logger logger = LoggerFactory.getLogger(Users_RolesDaoImpl.class);
 
 	public void setRoleCustomer(UsersRoles roleCustomer) {
-		logger.info("Users_RolesDaoImpl.setRoleCustomer" + roleCustomer.toString());
+		logger.info("Users_RolesDaoImpl.setRoleCustomer");
 		Session currentSession = sessionFactory.getCurrentSession();
 		currentSession.saveOrUpdate(roleCustomer);
 	}

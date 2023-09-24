@@ -26,7 +26,7 @@ public class PetHouseUserDetailsService implements UserDetailsService {
 
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		logger.debug("PetHouseUserDetailsService.loadUserByUsername: " + username);
-		List<Users> listUser = userDao.findUserByUsernameAndByStatus(username, SystemConstant.ACTIVE_ACCOUNT);
+		List<Users> listUser = userDao.findUserByUsernameAndByEnabled(username, SystemConstant.ACTIVE_ACCOUNT);
 		if (CollectionUtils.isEmpty(listUser)) {
 			throw new UsernameNotFoundException("Người dùng không tồn tại");
 		}

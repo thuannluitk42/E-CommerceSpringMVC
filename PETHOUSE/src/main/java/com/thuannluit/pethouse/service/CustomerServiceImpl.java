@@ -49,11 +49,26 @@ public class CustomerServiceImpl implements CustomerService {
 	private static final Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
 	public void registerCustomer(Users customer) {
-		initDataDefaultCustomer(customer);
+		initDataDefaultAccount(customer, 0);
 		userDao.saveCustomer(customer);
-		UsersRoles roleCustomer = initRoleDefaultCustomer(customer);
+		UsersRoles roleCustomer = initDataRoles(customer, 1);
 		users_RolesDao.setRoleCustomer(roleCustomer);
 		logger.info("CustomerServiceImpl.registerCustomer: " + customer.toString());
+	}
+
+	public Users createNewUser(UserInfo userSystem) {
+		List<UserInfo> listUserInfo = new ArrayList<UserInfo>();
+		listUserInfo.add(userSystem);
+		List<Users> listUser = cvtUserDto(listUserInfo);
+		Users u = listUser.get(0);
+
+		initDataDefaultAccount(u, 1);
+		userDao.saveCustomer(u);
+		
+		UsersRoles roleCustomer = initDataRoles(u, Integer.valueOf(userSystem.getRoleName()));
+		users_RolesDao.setRoleCustomer(roleCustomer);
+		logger.info("CustomerServiceImpl.createNewUser: " + u.toString());
+		return u;
 	}
 
 	public String encodePassword(String password) {
@@ -104,41 +119,55 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 	}
 
-	void initDataDefaultCustomer(Users customer) {
+	void initDataDefaultAccount(Users customer, int flagMode) {
 
+		// flagMode = 1: user tao boi admin
+		// flagMode = 0: user dang ky = client
 		String email = customer.getEmail();
-		int index = email.indexOf('@');
-		String username = email.substring(0, index);
-		customer.setUsername(username);
-		customer.setEmail(email);
+		if (flagMode == 0) {
+			customer.setEmail(email);
+			int index = email.indexOf('@');
+			String username = email.substring(0, index);
+			customer.setUsername(username);
+			customer.setCreatedBy(SystemConstant.CLIENT);
+			customer.setUpdatedBy(SystemConstant.CLIENT);
+			String randomCode = RandomString.make(64);
+			customer.setVerificationCode(randomCode);
+
+			customer.setEnabled(false);
+		}
+
+		if (flagMode == 1) {
+			customer.setUsername(customer.getUsername());
+			customer.setCreatedBy(SystemConstant.ADMIN);
+			customer.setUpdatedBy(SystemConstant.ADMIN);
+			customer.setEnabled(true);
+		}
+
 		customer.setPassword(encodePassword(customer.getPassword()));
 
 		customer.setCreatedAt(new Date());
-		customer.setCreatedBy("Client");
 		customer.setUpdatedAt(new Date());
-		customer.setUpdatedBy("Client");
+
 		customer.setStatus(false);
-		customer.setEnabled(false);
-
-		String randomCode = RandomString.make(64);
-		customer.setVerificationCode(randomCode);
-
 	}
 
-	UsersRoles initRoleDefaultCustomer(Users customer) {
+	UsersRoles initDataRoles(Users customer, int roleId) {
 		UsersRoles userRole = new UsersRoles();
-		int roleId = 1;
 
-		List<Users> user = userDao.findUserByUsernameAndByStatus(customer.getUsername(), SystemConstant.INACTIVE_ACCOUNT);
+		System.out.println("CustomerServiceImpl.initDataRoles()"+customer.toString());
+		
+		List<Users> user = userDao.findUserByUsername(customer.getUsername());
 		userRole.setUserId(user.get(0).getUserId());
 		userRole.setRoleId(roleId);
 		userRole.setEnabled(true);
+
 		return userRole;
 	}
 
 	public List<Users> findCustomerByUsernameAndPassword(Login login) {
 		logger.info("CustomerServiceImpl.findCustomerByUsernameAndPassword");
-		List<Users> listUser = userDao.findUserByUsernameAndByStatus(login.getUsername(),
+		List<Users> listUser = userDao.findUserByUsernameAndByEnabled(login.getUsername(),
 				SystemConstant.ACTIVE_ACCOUNT);
 		if (CollectionUtils.isEmpty(listUser)) {
 			return null;
@@ -172,7 +201,9 @@ public class CustomerServiceImpl implements CustomerService {
 		UserInfo item;
 		for (Users u : listUser) {
 			item = new UserInfo();
+			item.setUserId(u.getUserId());
 			item.setUsername(u.getUsername());
+			item.setFullName(u.getFullName());
 			item.setUrlAvatar("");
 			item.setEmail(u.getEmail());
 
@@ -189,6 +220,32 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 		return userInfos;
 	}
+
+	private List<Users> cvtUserDto(List<UserInfo> listUserInfo) {
+		List<Users> userList = new ArrayList<Users>();
+		Users item;
+		for (UserInfo ui : listUserInfo) {
+			item = new Users();
+			item.setFullName(ui.getFullName());
+			item.setUsername(ui.getUsername());
+			item.setBirthday(utility.cvtDDMMYYYY(ui.getBirthday()));
+			item.setGender(String.valueOf(ui.getGender()));
+			item.setEmail(ui.getEmail());
+			item.setPhoneNumber(ui.getPhoneNumber());
+			item.setAddress(ui.getAddress());
+			item.setPassword(ui.getPassword());
+			userList.add(item);
+		}
+		return userList;
+	}
+
+//	private String cvtGender(int gender) {
+//		if (gender == 0) {
+//			return "Nữ";
+//		} else {
+//			return "Nam";
+//		}
+//	}
 
 	public Page<UserInfo> findPaginated(Pageable pageable) {
 		logger.info("CustomerServiceImpl.findPaginated");

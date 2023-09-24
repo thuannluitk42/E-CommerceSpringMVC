@@ -13,7 +13,7 @@ public interface UserDao {
 
 	void saveCustomer(Users customer);
 
-	List<Users> findUserByUsernameAndByStatus(String username ,boolean activeAccount);
+	List<Users> findUserByUsernameAndByEnabled(String username ,boolean activeAccount);
 	
 	Users findUserByVerificationCode(String code);
 	
@@ -28,6 +28,8 @@ public interface UserDao {
 	Users updateInfoCustomer(Users user);
 
 	boolean disableUser(Integer user_id);
+
+	List<Users> findUserByUsername(String username);
 
 }
 

@@ -16,6 +16,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -34,6 +36,7 @@ public class Users extends BasedEntity implements Serializable {
 	@Column(name = "fullName", nullable = true)
 	private String fullName;
 	@Column(name = "birthday", nullable = true)
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private String birthday;
 	@Column(name = "address", nullable = true)
 	private String address;

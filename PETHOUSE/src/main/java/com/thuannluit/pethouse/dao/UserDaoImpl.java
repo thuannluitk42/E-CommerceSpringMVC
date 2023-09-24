@@ -41,14 +41,14 @@ public class UserDaoImpl implements UserDao {
 	Utility utility = new Utility();
 
 	public void saveCustomer(Users customer) {
-		logger.info("UserDaoImpl.UserDaoImpl");
+		logger.info("UserDaoImpl.saveCustomer");
 		Session currentSession = sessionFactory.getCurrentSession();
 		currentSession.saveOrUpdate(customer);
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<Users> findUserByUsernameAndByStatus(String username, boolean statusAccount) {
-		logger.info("UserDaoImpl.getUsers");
+	public List<Users> findUserByUsernameAndByEnabled(String username, boolean statusAccount) {
+		logger.info("UserDaoImpl.findUserByUsernameAndByEnabled");
 		Session session = sessionFactory.getCurrentSession();
 		CriteriaBuilder cb = session.getCriteriaBuilder();
 		CriteriaQuery<Users> cq = cb.createQuery(Users.class);
@@ -257,6 +257,24 @@ public class UserDaoImpl implements UserDao {
 			return false;
 		}
 
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Users> findUserByUsername(String username) {
+		logger.info("UserDaoImpl.findUserByUsername");
+		Session session = sessionFactory.getCurrentSession();
+		CriteriaBuilder cb = session.getCriteriaBuilder();
+		CriteriaQuery<Users> cq = cb.createQuery(Users.class);
+		Root<Users> root = cq.from(Users.class);
+		cq.select(root);
+
+		if (StringUtils.hasText(username)) {
+			Predicate p = cb.equal(root.get("username").as(String.class), username.trim());
+			cq = cq.where(p);
+		}
+		Query query = session.createQuery(cq);
+
+		return query.getResultList();
 	}
 
 //	public boolean update(YourClass yourObject) {

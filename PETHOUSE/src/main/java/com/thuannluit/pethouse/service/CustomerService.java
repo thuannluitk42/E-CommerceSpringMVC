@@ -29,4 +29,7 @@ public interface CustomerService {
 	Users updateInfoUser(Users user);
 
 	boolean processDeleteUserById(Integer user_id);
+
+	Users createNewUser(UserInfo userInfo);
+
 }
